@@ -175,9 +175,8 @@
     }
 
     .profile-crop {
-      width: 190px;
-      height: 190px;
-      aspect-ratio: 1 / 1;
+      width: 100%;
+      height: 185px;
       object-fit: cover;
       object-position: 50% 28%;
       border-radius: 1.5rem;
@@ -187,8 +186,8 @@
 
     @media (max-width: 640px) {
       .profile-crop {
-        width: 160px;
-        height: 160px;
+        width: 100%;
+        height: 220px;
       }
     }
 
@@ -248,6 +247,25 @@
         font-size: 9px;
       }
     }
+
+    .insight-card {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .insight-title {
+      min-height: 3.35rem;
+      display: flex;
+      align-items: flex-start;
+      line-height: 1.25;
+      margin-top: 0;
+    }
+
+    .insight-card > p {
+      margin-top: 0.75rem;
+    }
+
   </style>
 </head>
 
@@ -320,16 +338,16 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-4">
-          <article class="glass-card rounded-4xl p-6">
-            <h3 class="text-xl font-black mt-3">Volume vs. Schaarste</h3>
+          <article class="glass-card rounded-4xl p-6 insight-card">
+            <h3 class="text-xl font-black insight-title">Volume vs. Schaarste</h3>
             <p class="text-navy/65 mt-3 leading-relaxed">
               Niet elke vacature heeft een bereikprobleem. Volumeprofielen hebben snelle opvolging en laagdrempelig
               contact nodig. Schaarsteprofielen vereisen inhoudelijke overtuiging, visie en langdurige relatieopbouw.
             </p>
           </article>
 
-          <article class="glass-card rounded-4xl p-6">
-            <h3 class="text-xl font-black mt-3">De Regionale Paradox</h3>
+          <article class="glass-card rounded-4xl p-6 insight-card">
+            <h3 class="text-xl font-black insight-title">De Regionale Paradox</h3>
             <p class="text-navy/65 mt-3 leading-relaxed">
               De Randstad domineert in absoluut vacaturevolume, maar middelgrote zorgplaatsen scoren vaak hoger wanneer
               het vacaturevolume wordt afgezet tegen het aantal inwoners. Dat wijst op locaties waar een relatief grote
@@ -338,8 +356,8 @@
             </p>
           </article>
 
-          <article class="glass-card rounded-4xl p-6">
-            <h3 class="text-xl font-black mt-3">De zichtbare talentpool raakt verzadigd</h3>
+          <article class="glass-card rounded-4xl p-6 insight-card">
+            <h3 class="text-xl font-black insight-title">De zichtbare talentpool raakt verzadigd</h3>
             <p class="text-navy/65 mt-3 leading-relaxed">
               Slechts circa 8% van de LinkedIn-zorgtalentpool staat expliciet open voor een nieuwe kans. Dat betekent
               niet dat de overige professionals actief of latent zoeken, maar wel dat generieke campagnes vooral
@@ -380,7 +398,7 @@
           </div>
 
           <p class="text-xs text-navy/40 mt-3">
-            Formule relatieve zorgvraag: vacaturevolume in de meetperiode ÷ CBS-bevolking op 1 januari 2026 × 100.000.
+            Formule relatieve zorgvraag: vacaturevolume binnen de 25 opgenomen plaatsen ÷ de gezamenlijke CBS-bevolking van deze plaatsen op 1 januari 2026 × 100.000.
             Het percentage toont welk deel van de geregistreerde vacatures aan het einde van de meetperiode nog actief
             was. Dit is niet hetzelfde als het percentage vacatures dat aantoonbaar zestien weken openstaat of
             daadwerkelijk onvervuld is.
@@ -404,12 +422,7 @@
             <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
               <p class="font-black">Conclusie</p>
               <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                Met het hoogste vacaturevolume in de analyse en een groot aandeel vacatures dat aan het einde van de
-                meetperiode nog actief is, vormt VIG een structureel instroomvraagstuk. De omvang van de beroepsgroep
-                lost dit niet automatisch op: organisaties concurreren lokaal op dezelfde professionals, terwijl
-                rooster, contractomvang, bereikbaarheid en snelheid van contact de keuze beïnvloeden. Een
-                recruitmentorganisatie moet daarom per locatie meten waar kandidaten afhaken, binnen één werkdag
-                persoonlijk opvolgen en de vacaturepropositie concreet maken op diensten, uren en werklocatie.
+                VIG & verzorgenden vormen vooral een volume- en conversievraagstuk. De vraag is breed verspreid, maar werkgevers concurreren lokaal op dezelfde professionals. Rooster, contractomvang, bereikbaarheid en snelheid van contact bepalen daardoor vaker de keuze dan alleen het werkgeversmerk. Voor een recruitmentorganisatie ligt de grootste winst in een lokale, continu actieve instroomaanpak: per locatie zichtbaar maken welke diensten en uren beschikbaar zijn, kandidaten binnen één werkdag persoonlijk spreken en exact meten waar zij afhaken. Extra mediabudget zonder snellere opvolging of een concretere locatiepropositie vergroot vooral het aantal leads dat alsnog verdwijnt. De funnel moet daarom worden gestuurd op bereik, eerste contact, kwalificatie, afspraak en daadwerkelijke indiensttreding.
               </p>
             </div>
           </div>
@@ -455,11 +468,7 @@
             <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
               <p class="font-black">Conclusie</p>
               <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                De verpleegkundigenmarkt wordt niet alleen bepaald door het aantal beschikbare professionals, maar door
-                concurrentie tussen zorgdomeinen. Een verpleegkundige kan kiezen tussen ziekenhuis, VVT, GGZ,
-                gehandicaptenzorg, thuiszorg en flex. Daardoor werkt één algemene verpleegkundigenpropositie
-                onvoldoende. Een recruitmentorganisatie moet de doelgroep segmenteren naar specialisme en werkomgeving
-                en per segment aantoonbaar maken wat anders is aan werkdruk, autonomie, team, rooster en ontwikkeling.
+                Bij verpleegkundigen ontstaat de druk doordat meerdere zorgdomeinen om dezelfde professionals concurreren. Een kandidaat kan kiezen tussen ziekenhuis, VVT, thuiszorg, GGZ, gehandicaptenzorg en flex, waardoor één algemene propositie weinig onderscheid maakt. Voor een recruitmentorganisatie is segmentatie daarom essentieel: maak per specialisme en werkomgeving concreet wat anders is aan autonomie, werkdruk, team, rooster en ontwikkeling. Bouw daarnaast een eigen talentpool op en onderhoud contact buiten directe sollicitatiemomenten via referral, events en persoonlijke activatie. De commerciële wervingsvraag is niet alleen hoe meer mensen worden bereikt, maar waarom een verpleegkundige juist voor deze organisatie en dit zorgdomein zou bewegen.
               </p>
             </div>
           </div>
@@ -505,12 +514,7 @@
             <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
               <p class="font-black">Conclusie</p>
               <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                De kinderopvangmarkt wordt begrensd door kwalificatie-eisen, lokale beschikbaarheid en specifieke
-                werkuren. Daardoor is de potentiële doelgroep kleiner dan het totale aantal geïnteresseerden. Een
-                recruitmentorganisatie moet vóór de sollicitatie duidelijk maken welke diploma’s kwalificeren, welke
-                uren beschikbaar zijn en welke opleidingsroute mogelijk is. BBL en zij-instroom moeten daarbij als
-                volwaardige instroomkanalen worden ingericht, niet als oplossing nadat reguliere werving onvoldoende
-                oplevert.
+                De kinderopvangmarkt wordt minder door bereik begrensd dan door kwalificatie, beschikbaarheid en werkuren. Een grote groep geïnteresseerden kan niet direct instromen, terwijl middaguren en lokale locaties de inzetbaarheid verder beperken. Voor een recruitmentorganisatie betekent dit dat de kwalificatieroute onderdeel van de campagne moet zijn. Maak vóór de sollicitatie duidelijk welke diploma’s geldig zijn, welke uren worden aangeboden en welke BBL- of zij-instroomroute mogelijk is. Richt de funnel zo in dat kandidaten direct op opleiding, locatie en beschikbaarheid worden gescreend. Wie alleen concurreert om de bestaande gekwalificeerde pool, blijft afhankelijk van dezelfde beperkte groep; duurzame groei vraagt om het actief vergroten van de instroom.
               </p>
             </div>
           </div>
@@ -556,12 +560,7 @@
             <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
               <p class="font-black">Conclusie</p>
               <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                Binnen de brede categorie psychologen en pedagogisch adviseurs blijft een aanzienlijk deel van de
-                vacatures actief. Voor functies zoals GZ-psycholoog, psychotherapeut en verpleegkundig specialist kan de
-                schaarste nog sterker zijn, maar daarvoor is een afzonderlijke uitsplitsing nodig. De analyse
-                ondersteunt wel dat generiek bereik beperkt onderscheidend is. Een recruitmentorganisatie moet de
-                inhoudelijke propositie centraal stellen: behandelvisie, autonomie, caseload, supervisie, teamkwaliteit
-                en ruimte voor ontwikkeling.
+                Bij GGZ-profielen verhult een lager vacaturevolume hoe moeilijk de markt werkelijk is. De relevante doelgroep is kleiner, inhoudelijk kritisch en gevoelig voor behandelvisie, autonomie, caseload, supervisie en teamkwaliteit. Generieke campagnes leveren daardoor snel bereik op zonder voldoende overtuigingskracht. Voor een recruitmentorganisatie moet de inhoudelijke propositie vóór de mediakeuze worden ontwikkeld: waarom is het vak hier inhoudelijk aantrekkelijker en welke professionele ruimte krijgt iemand werkelijk? Combineer dit met gerichte sourcing, referral en langdurige nurturing van bekende contacten. De grootste conversiewinst ontstaat niet door meer standaardvacatureverkeer, maar door geloofwaardig persoonlijk contact met professionals die niet actief zoeken en eerst inhoudelijk overtuigd moeten worden.
               </p>
             </div>
           </div>
@@ -600,75 +599,61 @@
               <span class="section-number text-4xl font-black text-bonding">05</span>
               <div>
                 <p class="text-xs font-black uppercase tracking-[0.16em] text-cobalt">Specialist</p>
-                <h2 class="text-2xl md:text-2xl md:text-3xl font-black tracking-[-0.05em] mt-1">Artsen & specialisten
-                </h2>
+                <h2 class="text-2xl md:text-3xl font-black tracking-[-0.05em] mt-1">Artsen & specialisten</h2>
               </div>
             </div>
 
             <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
               <p class="font-black">Conclusie</p>
               <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                De nieuwe export maakt voor artsen en medisch specialisten nog geen betrouwbare regionale herberekening
-                mogelijk, omdat deze profielen niet als afzonderlijke beroepsgroep zijn opgenomen. De eerdere
-                profielanalyse blijft wel richtinggevend: bij deze kleine, gereguleerde en netwerkgedreven doelgroep
-                weegt de kwaliteit van contact zwaarder dan mediavolume. Voor een recruitmentorganisatie betekent dit
-                dat gerichte sourcing, inhoudelijke geloofwaardigheid en een snel besluitvormingsproces leidend moeten
-                zijn. Voor een vergelijkbare kaart is een aanvullende Jobfeed-export nodig waarin artsen en specialisten
-                afzonderlijk zijn geselecteerd.
+                Voor artsen en specialisten toont de aanvullende export 3.117 vacatures binnen de 25 opgenomen plaatsen, waarvan 45,5% aan het einde van de meetperiode nog actief was. De relatieve zorgvraag piekt onder meer in Nieuwegein, Zwolle, Maastricht en Gouda, niet alleen in de grootste steden. Dat maakt de aanpak tegelijk regionaal en specialistisch. Voor een recruitmentorganisatie is dit geen schaalvraagstuk, maar een precisievraagstuk: identificeer relevante netwerken, bouw een vakinhoudelijk geloofwaardig verhaal en verkort het proces tussen eerste contact en inhoudelijke kennismaking. Brede zichtbaarheid kan ondersteunen, maar gerichte sourcing, netwerkactivatie en snelle besluitvorming bepalen uiteindelijk of een arts daadwerkelijk in beweging komt.
               </p>
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 border-t border-softwhite">
             <div class="p-5 md:p-6 md:border-r border-softwhite">
-              <div class="mb-4">
-                <h3 class="text-xl font-black">Regionale vacaturedruk</h3>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <h3 class="text-lg md:text-xl font-black">Relatieve zorgvraag per plaats</h3>
               </div>
-              <div class="map-shell flex items-center justify-center bg-softwhite/70 p-8 text-center">
-                <div class="max-w-md">
-                  <p class="text-lg font-black">Niet beschikbaar in deze export</p>
-                  <p class="text-sm text-navy/60 mt-3 leading-relaxed">
-                    De aangeleverde top-10 beroepsgroepen bevatten geen afzonderlijke categorie voor artsen of medisch
-                    specialisten.
-                    De categorie “Overige beroepen” is te breed om hiervoor als betrouwbare proxy te gebruiken.
-                  </p>
-                </div>
-              </div>
+              <div id="map-doctors" class="map-shell"></div>
               <p class="text-xs text-navy/40 mt-2">
-                Nodig: dezelfde Jobfeed-uitsplitsing met Artsen / Medisch specialisten als afzonderlijke beroepsgroep.
+                Artsen + Specialisten en chirurgen. Vacatures per 100.000 inwoners binnen de 25 opgenomen plaatsen.
+                De indicator toont de relatieve omvang van de zorgvraag, niet het exacte aantal beschikbare artsen.
               </p>
             </div>
 
             <div class="p-5 md:p-6">
-              <h3 class="text-lg md:text-xl font-black mb-4">Percentage vacatures nog actief binnen de 16-wekenperiode
-              </h3>
+              <h3 class="text-lg md:text-xl font-black mb-4">Percentage vacatures nog actief binnen de 16-wekenperiode</h3>
               <div class="chart-shell compact"><canvas id="doctorsChart"></canvas></div>
+              <p class="text-xs text-navy/40 mt-2">
+                Grootste plaatsen naar vacaturevolume, aflopend gesorteerd op het percentage dat aan het einde van de meetperiode nog actief is.
+              </p>
             </div>
           </div>
         </article>
       </div>
     </section>
 
-
-
     <section id="contact" class="px-3 md:px-4 py-7">
       <div class="max-w-[900px] mx-auto">
         <article class="rounded-4xl bg-gradient-to-r from-cobalt/5 to-bonding/15 p-6 md:p-7">
-          <div class="grid md:grid-cols-12 gap-8 items-center">
-            <div class="md:col-span-7">
-              <p class="text-sm font-black uppercase tracking-[0.16em] text-cobalt">Van inzicht naar gerichte actie</p>
-              <h2 class="text-2xl md:text-2xl md:text-3xl font-black tracking-[-0.06em] mt-2">Ontdek waar jouw
-                wervingsproces vastloopt</h2>
-              <p class="text-navy/68 text-lg leading-relaxed mt-4 max-w-3xl">
+          <div class="mb-6">
+            <p class="text-sm font-black uppercase tracking-[0.16em] text-cobalt">Van inzicht naar gerichte actie</p>
+            <h2 class="text-2xl md:text-3xl font-black tracking-[-0.06em] mt-2">
+              Ontdek waar jouw wervingsproces vastloopt
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-12 gap-7 items-start">
+            <div class="md:col-span-8">
+              <p class="text-navy/68 text-lg leading-relaxed max-w-3xl">
                 Dutchwebshark brengt per locatie en arbeidsdoelgroep in kaart waar de personeelsdruk ontstaat.
-                Vervolgens richten we
-                de volledige instroomketen in: doelgroepsegmentatie, campagnes en sourcing, persoonlijke
-                WhatsApp-opvolging,
-                kwalificatie, ATS-proces en een dashboard met conversie, snelheid en invulling per locatie. In een
-                eerste analyse
-                vergelijken we de regionale arbeidsmarkt, instroom en uitval per doelgroep en de snelheid van opvolging.
-                Daarmee
-                wordt zichtbaar of de grootste winst zit in bereik, propositie, proces of behoud.
+                Vervolgens richten we de volledige instroomketen in: doelgroepsegmentatie, campagnes en sourcing,
+                persoonlijke WhatsApp-opvolging, kwalificatie, ATS-proces en een dashboard met conversie, snelheid en
+                invulling per locatie. In een eerste analyse vergelijken we de regionale arbeidsmarkt, instroom en uitval
+                per doelgroep en de snelheid van opvolging. Daarmee wordt zichtbaar of de grootste winst zit in bereik,
+                propositie, proces of behoud.
               </p>
 
               <a href="https://meetings.dutchwebshark.com/meetings/benthe-de-jong"
@@ -678,8 +663,14 @@
               </a>
             </div>
 
-            <div class="md:col-span-5">
-              <div class="grid sm:grid-cols-[1fr_190px] gap-6 items-center">
+            <div class="md:col-span-4">
+              <div class="flex flex-col gap-5">
+                <img
+                  src="https://dutchwebshark.com/wp-content/uploads/2026/01/dutchwebshark-over-ons-team-twan-portret.jpg"
+                  alt="Twan Houwers van Dutchwebshark"
+                  class="profile-crop w-full max-w-none"
+                />
+
                 <div class="space-y-3 text-sm">
                   <p><strong>Mail:</strong> <a class="text-cobalt"
                       href="mailto:info@dutchwebshark.com">info@dutchwebshark.com</a></p>
@@ -687,9 +678,6 @@
                   <p><strong>Website:</strong> <a class="text-cobalt"
                       href="https://dutchwebshark.com/">dutchwebshark.com</a></p>
                 </div>
-                <img
-                  src="https://dutchwebshark.com/wp-content/uploads/2026/01/dutchwebshark-over-ons-team-twan-portret.jpg"
-                  alt="Twan Houwers van Dutchwebshark" class="profile-crop" />
               </div>
             </div>
           </div>
@@ -709,13 +697,12 @@
           </div>
 
           <p class="text-xs text-navy/35 leading-relaxed mt-5">
-            Bronnen en periode: Jobfeed/Textkernel, laatste 16 weken, rapport aangemaakt 16-07-2026; CBS voorlopige
+            Bronnen en periode: Jobfeed/Textkernel, laatste 16 weken, rapporten aangemaakt 16-07-2026 en 20-07-2026; CBS voorlopige
             inwonersaantallen per gemeente op 1-1-2026; LinkedIn Talent Insights voor eerdere talentpoolanalyses.
             Beroepsgroep- en plaatscijfers zijn gebaseerd op de aangeleverde 16-wekenmeting. “Nog actief” betekent
             actief aan het einde van de meetperiode en is niet hetzelfde als aantoonbaar zestien weken openstaand of
             bewezen onvervuld. De kaart gebruikt OpenStreetMap als ondergrond. De vier beschikbare doelgroepkaarten
-            gebruiken vacaturevolume per plaats gedeeld door de CBS-bevolking van de bijbehorende gemeente. Artsen en
-            specialisten ontbreken als afzonderlijke beroepsgroep in de aangeleverde export.
+            gebruiken vacaturevolume per plaats gedeeld door de CBS-bevolking van de bijbehorende gemeente. Voor Artsen & specialisten is de aanvullende export van 20-07-2026 gebruikt, op basis van Artsen plus Specialisten en chirurgen binnen de 25 opgenomen plaatsen.
           </p>
         </footer>
       </div>
@@ -733,6 +720,60 @@
     };
 
     Chart.register(ChartDataLabels);
+
+    const brokenBarAxisPlugin = {
+      id: 'brokenBarAxis',
+      afterDatasetsDraw(chart, args, options) {
+        if (!options || !options.enabled || chart.options.indexAxis !== 'y') return;
+
+        const { ctx, chartArea, scales } = chart;
+        const xScale = scales.x;
+        const meta = chart.getDatasetMeta(0);
+        const breakX = chartArea.left + 8;
+
+        ctx.save();
+
+        // Grijze markering in iedere balk.
+        meta.data.forEach(bar => {
+          const props = bar.getProps(['y', 'height'], true);
+          const top = props.y - props.height / 2;
+          const bottom = props.y + props.height / 2;
+
+          ctx.fillStyle = 'rgba(237, 240, 240, 0.96)';
+          ctx.fillRect(breakX - 4, top, 9, props.height);
+
+          ctx.strokeStyle = 'rgba(0, 38, 74, 0.34)';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(breakX - 4, bottom - 2);
+          ctx.lineTo(breakX + 1, top + 2);
+          ctx.moveTo(breakX, bottom - 2);
+          ctx.lineTo(breakX + 5, top + 2);
+          ctx.stroke();
+        });
+
+        // Dezelfde breukmarkering in de x-as.
+        const axisY = chartArea.bottom + 7;
+        ctx.strokeStyle = 'rgba(0, 38, 74, 0.46)';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(breakX - 4, axisY + 4);
+        ctx.lineTo(breakX + 1, axisY - 4);
+        ctx.moveTo(breakX, axisY + 4);
+        ctx.lineTo(breakX + 5, axisY - 4);
+        ctx.stroke();
+
+        ctx.fillStyle = 'rgba(0, 38, 74, 0.46)';
+        ctx.font = '9px Inter';
+        ctx.textAlign = 'left';
+        ctx.fillText(`as vanaf ${xScale.min}%`, chartArea.left + 18, chartArea.bottom + 20);
+
+        ctx.restore();
+      }
+    };
+
+    Chart.register(brokenBarAxisPlugin);
+
     Chart.defaults.font.family = 'Inter';
     Chart.defaults.color = COLORS.navy;
     Chart.defaults.plugins.tooltip.backgroundColor = COLORS.navy;
@@ -773,7 +814,7 @@
           {
             type: 'bar',
             label: 'Vacatures per 100.000 inwoners',
-            data: [80.9, 68.2, 37.7, 20.8, 86.6],
+            data: [63.0, 80.1, 37.3, 29.7, 53.3],
             backgroundColor: COLORS.cobalt,
             borderRadius: 10,
             barThickness: 28,
@@ -790,7 +831,7 @@
           {
             type: 'line',
             label: 'Percentage vacatures nog actief binnen de meetperiode',
-            data: [45.4, 45.6, 43.4, 43.2, 52.0],
+            data: [45.7, 44.1, 42.4, 43.7, 45.5],
             borderColor: COLORS.navy,
             backgroundColor: COLORS.navy,
             pointBackgroundColor: COLORS.navy,
@@ -888,6 +929,11 @@
       const pairs = labels.map((label, i) => ({ label, value: values[i] }))
         .sort((a, b) => b.value - a.value);
 
+      const minValue = Math.min(...pairs.map(pair => pair.value));
+      const maxValue = Math.max(...pairs.map(pair => pair.value));
+      const axisMin = Math.max(0, Math.floor(minValue / 5) * 5 - 5);
+      const axisMax = Math.min(100, Math.ceil((maxValue + 5) / 5) * 5);
+
       new Chart(document.getElementById(id), {
         type: 'bar',
         data: {
@@ -911,8 +957,9 @@
           indexAxis: 'y',
           responsive: true,
           maintainAspectRatio: false,
-          layout: { padding: { left: 4, right: 54, top: 2, bottom: 8 } },
+          layout: { padding: { left: 4, right: 54, top: 2, bottom: 24 } },
           plugins: {
+            brokenBarAxis: { enabled: true },
             legend: {
               position: 'bottom',
               align: 'center',
@@ -923,21 +970,37 @@
                 font: { weight: 400, size: 10 }
               }
             },
-            tooltip: { callbacks: { label: ctx => `${ctx.raw}% nog actief binnen de meetperiode` } }
+            tooltip: {
+              callbacks: {
+                label: ctx => `${ctx.raw}% nog actief binnen de meetperiode`
+              }
+            }
           },
           scales: {
             x: {
-              min: 0,
-              max: 80,
+              min: axisMin,
+              max: axisMax,
               grid: { color: COLORS.grid },
-              ticks: { callback: v => `${v}%`, color: COLORS.muted },
+              ticks: {
+                callback: v => `${v}%`,
+                color: COLORS.muted,
+                stepSize: 5,
+                font: { size: 10 }
+              },
               border: { display: false }
             },
             y: {
               grid: { display: false },
-              ticks: { color: COLORS.navy, font: { weight: 600, size: 11 }, autoSkip: false, padding: 6 },
+              ticks: {
+                color: COLORS.navy,
+                font: { weight: 600, size: 11 },
+                autoSkip: false,
+                padding: 6
+              },
               border: { display: false },
-              afterFit: scale => { scale.width = Math.min(145, Math.max(scale.width, 112)); }
+              afterFit: scale => {
+                scale.width = Math.min(145, Math.max(scale.width, 112));
+              }
             }
           }
         }
@@ -970,11 +1033,11 @@
 
     horizontalChart(
       'doctorsChart',
-      ['Bedrijfsarts', 'Oogarts', 'Verslavingsarts', 'Psychiater', 'Basisarts'],
-      [60.3, 57.4, 54.8, 52.5, 52.0]
+      ["Nijmegen", "Rotterdam", "Amsterdam", "Den Haag", "Eindhoven", "Amersfoort", "Breda", "Groningen"],
+      [54.5, 51.5, 50.0, 49.3, 48.7, 46.2, 42.2, 39.8]
     );
 
-    const targetMapData = { "map-vig": [{ "name": "Laren", "lat": 52.2563, "lng": 5.227, "vacancies": 64, "active": 29, "expired": 35, "population": 11547, "pressure": 554.3, "openPct": 45.3 }, { "name": "Ermelo", "lat": 52.2983, "lng": 5.6222, "vacancies": 99, "active": 45, "expired": 54, "population": 28199, "pressure": 351.1, "openPct": 45.5 }, { "name": "Sliedrecht", "lat": 51.8208, "lng": 4.7763, "vacancies": 69, "active": 27, "expired": 42, "population": 26531, "pressure": 260.1, "openPct": 39.1 }, { "name": "Heemstede", "lat": 52.349, "lng": 4.62, "vacancies": 65, "active": 29, "expired": 36, "population": 27556, "pressure": 235.9, "openPct": 44.6 }, { "name": "Heiloo", "lat": 52.6021, "lng": 4.7005, "vacancies": 53, "active": 14, "expired": 39, "population": 24613, "pressure": 215.3, "openPct": 26.4 }, { "name": "Baarn", "lat": 52.2112, "lng": 5.2874, "vacancies": 54, "active": 25, "expired": 29, "population": 25435, "pressure": 212.3, "openPct": 46.3 }, { "name": "Boekel", "lat": 51.6032, "lng": 5.6758, "vacancies": 24, "active": 13, "expired": 11, "population": 11686, "pressure": 205.4, "openPct": 54.2 }, { "name": "Woudenberg", "lat": 52.0808, "lng": 5.416, "vacancies": 30, "active": 16, "expired": 14, "population": 15099, "pressure": 198.7, "openPct": 53.3 }, { "name": "Goes", "lat": 51.5046, "lng": 3.8889, "vacancies": 79, "active": 47, "expired": 32, "population": 40387, "pressure": 195.6, "openPct": 59.5 }, { "name": "Druten", "lat": 51.8888, "lng": 5.6047, "vacancies": 38, "active": 17, "expired": 21, "population": 20019, "pressure": 189.8, "openPct": 44.7 }, { "name": "Gennep", "lat": 51.6986, "lng": 5.973, "vacancies": 34, "active": 16, "expired": 18, "population": 17953, "pressure": 189.4, "openPct": 47.1 }, { "name": "Huizen", "lat": 52.2992, "lng": 5.2416, "vacancies": 77, "active": 50, "expired": 27, "population": 41287, "pressure": 186.5, "openPct": 64.9 }, { "name": "Capelle aan den IJssel", "lat": 51.9302, "lng": 4.5777, "vacancies": 129, "active": 59, "expired": 70, "population": 69698, "pressure": 185.1, "openPct": 45.7 }, { "name": "Heemskerk", "lat": 52.5111, "lng": 4.6694, "vacancies": 72, "active": 20, "expired": 52, "population": 39529, "pressure": 182.1, "openPct": 27.8 }, { "name": "Middelburg", "lat": 51.4988, "lng": 3.6109, "vacancies": 90, "active": 41, "expired": 49, "population": 50439, "pressure": 178.4, "openPct": 45.6 }, { "name": "Valkenswaard", "lat": 51.35, "lng": 5.4597, "vacancies": 50, "active": 33, "expired": 17, "population": 31920, "pressure": 156.6, "openPct": 66.0 }], "map-nurses": [{ "name": "Laren", "lat": 52.2563, "lng": 5.227, "vacancies": 36, "active": 20, "expired": 16, "population": 11547, "pressure": 311.8, "openPct": 55.6 }, { "name": "Ermelo", "lat": 52.2983, "lng": 5.6222, "vacancies": 71, "active": 31, "expired": 40, "population": 28199, "pressure": 251.8, "openPct": 43.7 }, { "name": "Vught", "lat": 51.6536, "lng": 5.2873, "vacancies": 76, "active": 38, "expired": 38, "population": 33202, "pressure": 228.9, "openPct": 50.0 }, { "name": "Boekel", "lat": 51.6032, "lng": 5.6758, "vacancies": 25, "active": 14, "expired": 11, "population": 11686, "pressure": 213.9, "openPct": 56.0 }, { "name": "Leiderdorp", "lat": 52.1583, "lng": 4.5294, "vacancies": 57, "active": 32, "expired": 25, "population": 27973, "pressure": 203.8, "openPct": 56.1 }, { "name": "Nieuwegein", "lat": 52.0292, "lng": 5.08, "vacancies": 122, "active": 56, "expired": 66, "population": 68257, "pressure": 178.7, "openPct": 45.9 }, { "name": "Goes", "lat": 51.5046, "lng": 3.8889, "vacancies": 68, "active": 32, "expired": 36, "population": 40387, "pressure": 168.4, "openPct": 47.1 }, { "name": "Zeist", "lat": 52.0906, "lng": 5.2333, "vacancies": 100, "active": 47, "expired": 53, "population": 66648, "pressure": 150.0, "openPct": 47.0 }, { "name": "Heerlen", "lat": 50.8882, "lng": 5.9795, "vacancies": 127, "active": 67, "expired": 60, "population": 87764, "pressure": 144.7, "openPct": 52.8 }, { "name": "Gennep", "lat": 51.6986, "lng": 5.973, "vacancies": 25, "active": 11, "expired": 14, "population": 17953, "pressure": 139.3, "openPct": 44.0 }, { "name": "Gouda", "lat": 52.0116, "lng": 4.7105, "vacancies": 105, "active": 60, "expired": 45, "population": 77818, "pressure": 134.9, "openPct": 57.1 }, { "name": "Roermond", "lat": 51.1942, "lng": 5.987, "vacancies": 77, "active": 43, "expired": 34, "population": 61431, "pressure": 125.3, "openPct": 55.8 }, { "name": "Harderwijk", "lat": 52.3417, "lng": 5.62, "vacancies": 63, "active": 24, "expired": 39, "population": 50655, "pressure": 124.4, "openPct": 38.1 }, { "name": "Hoorn", "lat": 52.6424, "lng": 5.0602, "vacancies": 94, "active": 52, "expired": 42, "population": 76202, "pressure": 123.4, "openPct": 55.3 }, { "name": "Amstelveen", "lat": 52.3061, "lng": 4.8577, "vacancies": 118, "active": 64, "expired": 54, "population": 95840, "pressure": 123.1, "openPct": 54.2 }, { "name": "Assen", "lat": 52.9928, "lng": 6.5642, "vacancies": 86, "active": 27, "expired": 59, "population": 70769, "pressure": 121.5, "openPct": 31.4 }], "map-childcare": [{ "name": "Laren", "lat": 52.2563, "lng": 5.227, "vacancies": 21, "active": 6, "expired": 15, "population": 11547, "pressure": 181.9, "openPct": 28.6 }, { "name": "Heemstede", "lat": 52.349, "lng": 4.62, "vacancies": 42, "active": 25, "expired": 17, "population": 27556, "pressure": 152.4, "openPct": 59.5 }, { "name": "Landsmeer", "lat": 52.4308, "lng": 4.9157, "vacancies": 17, "active": 11, "expired": 6, "population": 11685, "pressure": 145.5, "openPct": 64.7 }, { "name": "Oostzaan", "lat": 52.4401, "lng": 4.8728, "vacancies": 14, "active": 6, "expired": 8, "population": 9778, "pressure": 143.2, "openPct": 42.9 }, { "name": "Bunnik", "lat": 52.0665, "lng": 5.1986, "vacancies": 23, "active": 6, "expired": 17, "population": 16402, "pressure": 140.2, "openPct": 26.1 }, { "name": "Zeist", "lat": 52.0906, "lng": 5.2333, "vacancies": 72, "active": 25, "expired": 47, "population": 66648, "pressure": 108.0, "openPct": 34.7 }, { "name": "Papendrecht", "lat": 51.8317, "lng": 4.6875, "vacancies": 33, "active": 10, "expired": 23, "population": 32267, "pressure": 102.3, "openPct": 30.3 }, { "name": "Oegstgeest", "lat": 52.18, "lng": 4.4693, "vacancies": 26, "active": 14, "expired": 12, "population": 26095, "pressure": 99.6, "openPct": 53.8 }, { "name": "Uitgeest", "lat": 52.5292, "lng": 4.71, "vacancies": 13, "active": 9, "expired": 4, "population": 13489, "pressure": 96.4, "openPct": 69.2 }, { "name": "Ermelo", "lat": 52.2983, "lng": 5.6222, "vacancies": 27, "active": 14, "expired": 13, "population": 28199, "pressure": 95.7, "openPct": 51.9 }, { "name": "Diemen", "lat": 52.3394, "lng": 4.9626, "vacancies": 30, "active": 16, "expired": 14, "population": 33327, "pressure": 90.0, "openPct": 53.3 }, { "name": "Leusden", "lat": 52.1324, "lng": 5.431, "vacancies": 29, "active": 4, "expired": 25, "population": 32287, "pressure": 89.8, "openPct": 13.8 }, { "name": "Baarn", "lat": 52.2112, "lng": 5.2874, "vacancies": 22, "active": 8, "expired": 14, "population": 25435, "pressure": 86.5, "openPct": 36.4 }, { "name": "Blaricum", "lat": 52.272, "lng": 5.2417, "vacancies": 11, "active": 2, "expired": 9, "population": 12938, "pressure": 85.0, "openPct": 18.2 }, { "name": "Woudenberg", "lat": 52.0808, "lng": 5.416, "vacancies": 12, "active": 4, "expired": 8, "population": 15099, "pressure": 79.5, "openPct": 33.3 }, { "name": "Leiderdorp", "lat": 52.1583, "lng": 4.5294, "vacancies": 22, "active": 12, "expired": 10, "population": 27973, "pressure": 78.6, "openPct": 54.5 }], "map-ggz": [{ "name": "Goes", "lat": 51.5046, "lng": 3.8889, "vacancies": 49, "active": 21, "expired": 28, "population": 40387, "pressure": 121.3, "openPct": 42.9 }, { "name": "Vught", "lat": 51.6536, "lng": 5.2873, "vacancies": 39, "active": 18, "expired": 21, "population": 33202, "pressure": 117.5, "openPct": 46.2 }, { "name": "Ermelo", "lat": 52.2983, "lng": 5.6222, "vacancies": 28, "active": 19, "expired": 9, "population": 28199, "pressure": 99.3, "openPct": 67.9 }, { "name": "Zeist", "lat": 52.0906, "lng": 5.2333, "vacancies": 57, "active": 24, "expired": 33, "population": 66648, "pressure": 85.5, "openPct": 42.1 }, { "name": "Amersfoort", "lat": 52.1561, "lng": 5.3878, "vacancies": 112, "active": 49, "expired": 63, "population": 163764, "pressure": 68.4, "openPct": 43.8 }, { "name": "Boekel", "lat": 51.6032, "lng": 5.6758, "vacancies": 7, "active": 2, "expired": 5, "population": 11686, "pressure": 59.9, "openPct": 28.6 }, { "name": "Zutphen", "lat": 52.1403, "lng": 6.2014, "vacancies": 27, "active": 15, "expired": 12, "population": 49292, "pressure": 54.8, "openPct": 55.6 }, { "name": "Assen", "lat": 52.9928, "lng": 6.5642, "vacancies": 38, "active": 15, "expired": 23, "population": 70769, "pressure": 53.7, "openPct": 39.5 }, { "name": "Roermond", "lat": 51.1942, "lng": 5.987, "vacancies": 33, "active": 18, "expired": 15, "population": 61431, "pressure": 53.7, "openPct": 54.5 }, { "name": "Deventer", "lat": 52.255, "lng": 6.1639, "vacancies": 53, "active": 26, "expired": 27, "population": 105111, "pressure": 50.4, "openPct": 49.1 }, { "name": "Gouda", "lat": 52.0116, "lng": 4.7105, "vacancies": 39, "active": 18, "expired": 21, "population": 77818, "pressure": 50.1, "openPct": 46.2 }, { "name": "Tiel", "lat": 51.8867, "lng": 5.4294, "vacancies": 21, "active": 7, "expired": 14, "population": 42524, "pressure": 49.4, "openPct": 33.3 }, { "name": "Zwolle", "lat": 52.5168, "lng": 6.083, "vacancies": 66, "active": 24, "expired": 42, "population": 134147, "pressure": 49.2, "openPct": 36.4 }, { "name": "Hilversum", "lat": 52.2292, "lng": 5.1669, "vacancies": 45, "active": 19, "expired": 26, "population": 94595, "pressure": 47.6, "openPct": 42.2 }, { "name": "Baarn", "lat": 52.2112, "lng": 5.2874, "vacancies": 12, "active": 2, "expired": 10, "population": 25435, "pressure": 47.2, "openPct": 16.7 }, { "name": "Beverwijk", "lat": 52.4863, "lng": 4.6563, "vacancies": 18, "active": 10, "expired": 8, "population": 43052, "pressure": 41.8, "openPct": 55.6 }] };
+    const targetMapData = {"map-vig":[{"name":"Laren","lat":52.2563,"lng":5.227,"vacancies":64,"active":29,"expired":35,"population":11547,"pressure":554.3,"openPct":45.3},{"name":"Ermelo","lat":52.2983,"lng":5.6222,"vacancies":99,"active":45,"expired":54,"population":28199,"pressure":351.1,"openPct":45.5},{"name":"Sliedrecht","lat":51.8208,"lng":4.7763,"vacancies":69,"active":27,"expired":42,"population":26531,"pressure":260.1,"openPct":39.1},{"name":"Heemstede","lat":52.349,"lng":4.62,"vacancies":65,"active":29,"expired":36,"population":27556,"pressure":235.9,"openPct":44.6},{"name":"Heiloo","lat":52.6021,"lng":4.7005,"vacancies":53,"active":14,"expired":39,"population":24613,"pressure":215.3,"openPct":26.4},{"name":"Baarn","lat":52.2112,"lng":5.2874,"vacancies":54,"active":25,"expired":29,"population":25435,"pressure":212.3,"openPct":46.3},{"name":"Boekel","lat":51.6032,"lng":5.6758,"vacancies":24,"active":13,"expired":11,"population":11686,"pressure":205.4,"openPct":54.2},{"name":"Woudenberg","lat":52.0808,"lng":5.416,"vacancies":30,"active":16,"expired":14,"population":15099,"pressure":198.7,"openPct":53.3},{"name":"Goes","lat":51.5046,"lng":3.8889,"vacancies":79,"active":47,"expired":32,"population":40387,"pressure":195.6,"openPct":59.5},{"name":"Druten","lat":51.8888,"lng":5.6047,"vacancies":38,"active":17,"expired":21,"population":20019,"pressure":189.8,"openPct":44.7},{"name":"Gennep","lat":51.6986,"lng":5.973,"vacancies":34,"active":16,"expired":18,"population":17953,"pressure":189.4,"openPct":47.1},{"name":"Huizen","lat":52.2992,"lng":5.2416,"vacancies":77,"active":50,"expired":27,"population":41287,"pressure":186.5,"openPct":64.9},{"name":"Capelle aan den IJssel","lat":51.9302,"lng":4.5777,"vacancies":129,"active":59,"expired":70,"population":69698,"pressure":185.1,"openPct":45.7},{"name":"Heemskerk","lat":52.5111,"lng":4.6694,"vacancies":72,"active":20,"expired":52,"population":39529,"pressure":182.1,"openPct":27.8},{"name":"Middelburg","lat":51.4988,"lng":3.6109,"vacancies":90,"active":41,"expired":49,"population":50439,"pressure":178.4,"openPct":45.6},{"name":"Valkenswaard","lat":51.35,"lng":5.4597,"vacancies":50,"active":33,"expired":17,"population":31920,"pressure":156.6,"openPct":66.0}],"map-nurses":[{"name":"Laren","lat":52.2563,"lng":5.227,"vacancies":36,"active":20,"expired":16,"population":11547,"pressure":311.8,"openPct":55.6},{"name":"Ermelo","lat":52.2983,"lng":5.6222,"vacancies":71,"active":31,"expired":40,"population":28199,"pressure":251.8,"openPct":43.7},{"name":"Vught","lat":51.6536,"lng":5.2873,"vacancies":76,"active":38,"expired":38,"population":33202,"pressure":228.9,"openPct":50.0},{"name":"Boekel","lat":51.6032,"lng":5.6758,"vacancies":25,"active":14,"expired":11,"population":11686,"pressure":213.9,"openPct":56.0},{"name":"Leiderdorp","lat":52.1583,"lng":4.5294,"vacancies":57,"active":32,"expired":25,"population":27973,"pressure":203.8,"openPct":56.1},{"name":"Nieuwegein","lat":52.0292,"lng":5.08,"vacancies":122,"active":56,"expired":66,"population":68257,"pressure":178.7,"openPct":45.9},{"name":"Goes","lat":51.5046,"lng":3.8889,"vacancies":68,"active":32,"expired":36,"population":40387,"pressure":168.4,"openPct":47.1},{"name":"Zeist","lat":52.0906,"lng":5.2333,"vacancies":100,"active":47,"expired":53,"population":66648,"pressure":150.0,"openPct":47.0},{"name":"Heerlen","lat":50.8882,"lng":5.9795,"vacancies":127,"active":67,"expired":60,"population":87764,"pressure":144.7,"openPct":52.8},{"name":"Gennep","lat":51.6986,"lng":5.973,"vacancies":25,"active":11,"expired":14,"population":17953,"pressure":139.3,"openPct":44.0},{"name":"Gouda","lat":52.0116,"lng":4.7105,"vacancies":105,"active":60,"expired":45,"population":77818,"pressure":134.9,"openPct":57.1},{"name":"Roermond","lat":51.1942,"lng":5.987,"vacancies":77,"active":43,"expired":34,"population":61431,"pressure":125.3,"openPct":55.8},{"name":"Harderwijk","lat":52.3417,"lng":5.62,"vacancies":63,"active":24,"expired":39,"population":50655,"pressure":124.4,"openPct":38.1},{"name":"Hoorn","lat":52.6424,"lng":5.0602,"vacancies":94,"active":52,"expired":42,"population":76202,"pressure":123.4,"openPct":55.3},{"name":"Amstelveen","lat":52.3061,"lng":4.8577,"vacancies":118,"active":64,"expired":54,"population":95840,"pressure":123.1,"openPct":54.2},{"name":"Assen","lat":52.9928,"lng":6.5642,"vacancies":86,"active":27,"expired":59,"population":70769,"pressure":121.5,"openPct":31.4}],"map-childcare":[{"name":"Laren","lat":52.2563,"lng":5.227,"vacancies":21,"active":6,"expired":15,"population":11547,"pressure":181.9,"openPct":28.6},{"name":"Heemstede","lat":52.349,"lng":4.62,"vacancies":42,"active":25,"expired":17,"population":27556,"pressure":152.4,"openPct":59.5},{"name":"Landsmeer","lat":52.4308,"lng":4.9157,"vacancies":17,"active":11,"expired":6,"population":11685,"pressure":145.5,"openPct":64.7},{"name":"Oostzaan","lat":52.4401,"lng":4.8728,"vacancies":14,"active":6,"expired":8,"population":9778,"pressure":143.2,"openPct":42.9},{"name":"Bunnik","lat":52.0665,"lng":5.1986,"vacancies":23,"active":6,"expired":17,"population":16402,"pressure":140.2,"openPct":26.1},{"name":"Zeist","lat":52.0906,"lng":5.2333,"vacancies":72,"active":25,"expired":47,"population":66648,"pressure":108.0,"openPct":34.7},{"name":"Papendrecht","lat":51.8317,"lng":4.6875,"vacancies":33,"active":10,"expired":23,"population":32267,"pressure":102.3,"openPct":30.3},{"name":"Oegstgeest","lat":52.18,"lng":4.4693,"vacancies":26,"active":14,"expired":12,"population":26095,"pressure":99.6,"openPct":53.8},{"name":"Uitgeest","lat":52.5292,"lng":4.71,"vacancies":13,"active":9,"expired":4,"population":13489,"pressure":96.4,"openPct":69.2},{"name":"Ermelo","lat":52.2983,"lng":5.6222,"vacancies":27,"active":14,"expired":13,"population":28199,"pressure":95.7,"openPct":51.9},{"name":"Diemen","lat":52.3394,"lng":4.9626,"vacancies":30,"active":16,"expired":14,"population":33327,"pressure":90.0,"openPct":53.3},{"name":"Leusden","lat":52.1324,"lng":5.431,"vacancies":29,"active":4,"expired":25,"population":32287,"pressure":89.8,"openPct":13.8},{"name":"Baarn","lat":52.2112,"lng":5.2874,"vacancies":22,"active":8,"expired":14,"population":25435,"pressure":86.5,"openPct":36.4},{"name":"Blaricum","lat":52.272,"lng":5.2417,"vacancies":11,"active":2,"expired":9,"population":12938,"pressure":85.0,"openPct":18.2},{"name":"Woudenberg","lat":52.0808,"lng":5.416,"vacancies":12,"active":4,"expired":8,"population":15099,"pressure":79.5,"openPct":33.3},{"name":"Leiderdorp","lat":52.1583,"lng":4.5294,"vacancies":22,"active":12,"expired":10,"population":27973,"pressure":78.6,"openPct":54.5}],"map-ggz":[{"name":"Goes","lat":51.5046,"lng":3.8889,"vacancies":49,"active":21,"expired":28,"population":40387,"pressure":121.3,"openPct":42.9},{"name":"Vught","lat":51.6536,"lng":5.2873,"vacancies":39,"active":18,"expired":21,"population":33202,"pressure":117.5,"openPct":46.2},{"name":"Ermelo","lat":52.2983,"lng":5.6222,"vacancies":28,"active":19,"expired":9,"population":28199,"pressure":99.3,"openPct":67.9},{"name":"Zeist","lat":52.0906,"lng":5.2333,"vacancies":57,"active":24,"expired":33,"population":66648,"pressure":85.5,"openPct":42.1},{"name":"Amersfoort","lat":52.1561,"lng":5.3878,"vacancies":112,"active":49,"expired":63,"population":163764,"pressure":68.4,"openPct":43.8},{"name":"Boekel","lat":51.6032,"lng":5.6758,"vacancies":7,"active":2,"expired":5,"population":11686,"pressure":59.9,"openPct":28.6},{"name":"Zutphen","lat":52.1403,"lng":6.2014,"vacancies":27,"active":15,"expired":12,"population":49292,"pressure":54.8,"openPct":55.6},{"name":"Assen","lat":52.9928,"lng":6.5642,"vacancies":38,"active":15,"expired":23,"population":70769,"pressure":53.7,"openPct":39.5},{"name":"Roermond","lat":51.1942,"lng":5.987,"vacancies":33,"active":18,"expired":15,"population":61431,"pressure":53.7,"openPct":54.5},{"name":"Deventer","lat":52.255,"lng":6.1639,"vacancies":53,"active":26,"expired":27,"population":105111,"pressure":50.4,"openPct":49.1},{"name":"Gouda","lat":52.0116,"lng":4.7105,"vacancies":39,"active":18,"expired":21,"population":77818,"pressure":50.1,"openPct":46.2},{"name":"Tiel","lat":51.8867,"lng":5.4294,"vacancies":21,"active":7,"expired":14,"population":42524,"pressure":49.4,"openPct":33.3},{"name":"Zwolle","lat":52.5168,"lng":6.083,"vacancies":66,"active":24,"expired":42,"population":134147,"pressure":49.2,"openPct":36.4},{"name":"Hilversum","lat":52.2292,"lng":5.1669,"vacancies":45,"active":19,"expired":26,"population":94595,"pressure":47.6,"openPct":42.2},{"name":"Baarn","lat":52.2112,"lng":5.2874,"vacancies":12,"active":2,"expired":10,"population":25435,"pressure":47.2,"openPct":16.7},{"name":"Beverwijk","lat":52.4863,"lng":4.6563,"vacancies":18,"active":10,"expired":8,"population":43052,"pressure":41.8,"openPct":55.6}],"map-doctors":[{"name":"Nieuwegein","lat":52.0292,"lng":5.08,"vacancies":70,"active":31,"expired":39,"population":68257,"pressure":102.6,"openPct":44.3},{"name":"Zwolle","lat":52.5168,"lng":6.083,"vacancies":130,"active":44,"expired":86,"population":134147,"pressure":96.9,"openPct":33.8},{"name":"Maastricht","lat":50.8514,"lng":5.691,"vacancies":114,"active":44,"expired":70,"population":126026,"pressure":90.5,"openPct":38.6},{"name":"Gouda","lat":52.0116,"lng":4.7105,"vacancies":70,"active":26,"expired":44,"population":77818,"pressure":90.0,"openPct":37.1},{"name":"Alkmaar","lat":52.6324,"lng":4.7534,"vacancies":95,"active":46,"expired":49,"population":113196,"pressure":83.9,"openPct":48.4},{"name":"Leiden","lat":52.1601,"lng":4.497,"vacancies":99,"active":49,"expired":50,"population":130328,"pressure":76.0,"openPct":49.5},{"name":"Utrecht","lat":52.0907,"lng":5.1214,"vacancies":253,"active":99,"expired":154,"population":378121,"pressure":66.9,"openPct":39.1},{"name":"Amersfoort","lat":52.1561,"lng":5.3878,"vacancies":104,"active":48,"expired":56,"population":163764,"pressure":63.5,"openPct":46.2},{"name":"Deventer","lat":52.255,"lng":6.1639,"vacancies":66,"active":29,"expired":37,"population":105111,"pressure":62.8,"openPct":43.9},{"name":"Eindhoven","lat":51.4416,"lng":5.4697,"vacancies":156,"active":76,"expired":80,"population":249783,"pressure":62.5,"openPct":48.7},{"name":"Nijmegen","lat":51.8426,"lng":5.838,"vacancies":112,"active":61,"expired":51,"population":189871,"pressure":59.0,"openPct":54.5},{"name":"Breda","lat":51.5719,"lng":4.7683,"vacancies":109,"active":46,"expired":63,"population":190204,"pressure":57.3,"openPct":42.2},{"name":"'s-Hertogenbosch","lat":51.6978,"lng":5.3037,"vacancies":92,"active":41,"expired":51,"population":162295,"pressure":56.7,"openPct":44.6},{"name":"Haarlem","lat":52.3874,"lng":4.6462,"vacancies":93,"active":59,"expired":34,"population":168898,"pressure":55.1,"openPct":63.4},{"name":"Arnhem","lat":51.9851,"lng":5.8987,"vacancies":90,"active":36,"expired":54,"population":171822,"pressure":52.4,"openPct":40.0},{"name":"Zeist","lat":52.0906,"lng":5.2333,"vacancies":34,"active":19,"expired":15,"population":66648,"pressure":51.0,"openPct":55.9}]};
 
     function pressureColor(value) {
       if (value >= 200) return '#00264A';
