@@ -71,6 +71,18 @@
       overflow-x: hidden;
     }
 
+    .pdf-only {
+      display: none !important;
+    }
+
+    .desktop-copy {
+      display: block;
+    }
+
+    .mobile-copy {
+      display: none;
+    }
+
     .glass-card {
       background: rgba(255, 255, 255, .92);
       border: 1px solid rgba(221, 228, 235, .95);
@@ -90,6 +102,35 @@
     .nav-link.active {
       color: var(--navy);
       border-color: var(--cobalt);
+    }
+
+    .report-nav {
+      transition: transform .24s ease, opacity .2s ease, visibility .2s ease;
+      will-change: transform;
+    }
+
+    .report-nav.is-floating {
+      position: fixed !important;
+      top: .75rem !important;
+      left: 50%;
+      width: min(calc(100% - 1.5rem), 900px);
+      transform: translate(-50%, calc(-100% - 1.5rem));
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .report-nav.is-floating.is-visible {
+      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .report-nav {
+        transition: none;
+      }
     }
 
     .section-number {
@@ -152,6 +193,14 @@
       scroll-margin-top: 110px;
     }
 
+    .mobile-pressure-list {
+      display: none;
+    }
+
+    .mobile-chart-scale-note {
+      display: none;
+    }
+
     @media (max-width: 1024px) {
       .chart-shell {
         height: 310px;
@@ -164,13 +213,184 @@
     }
 
     @media (max-width: 640px) {
+      .desktop-copy {
+        display: none !important;
+      }
+
+      .mobile-copy {
+        display: block !important;
+      }
+
+      .group-section {
+        padding-right: .75rem !important;
+        padding-left: .75rem !important;
+      }
+
+      .group-section > div > article {
+        border-radius: 1.5rem !important;
+      }
+
+      .section-copy,
+      .visual-panel,
+      .contact-card {
+        padding: 1rem !important;
+      }
+
+      .visual-panel {
+        min-width: 0;
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      .visual-panel > p {
+        width: 100%;
+        max-width: 100%;
+        padding-right: .15rem;
+        padding-left: .15rem;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: normal;
+        hyphens: auto;
+      }
+
+      .group-section article,
+      .group-section article > .grid,
+      .chart-shell,
+      .map-shell {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .chart-shell.compact {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow: hidden;
+      }
+
+      .chart-shell.compact canvas {
+        display: block;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      .insight-card {
+        padding: 1rem !important;
+      }
+
+      .insight-title {
+        min-height: 0;
+      }
+
+      .section-summary {
+        padding: 1rem !important;
+        border-radius: 1.25rem !important;
+      }
+
       .chart-shell {
         height: 285px;
+      }
+
+      .chart-shell.overview-chart-shell {
+        height: 340px;
+      }
+
+      .mobile-chart-scale-note {
+        display: grid;
+        gap: .35rem;
+        margin-top: .65rem;
+        color: rgba(0, 38, 74, .62);
+        font-size: .72rem;
+        line-height: 1.35;
+      }
+
+      .mobile-chart-scale-note span {
+        display: flex;
+        align-items: center;
+        gap: .45rem;
+      }
+
+      .mobile-chart-scale-note i {
+        flex: 0 0 auto;
+        width: 9px;
+        height: 9px;
+        border-radius: 3px;
+      }
+
+      .mobile-chart-scale-note .scale-demand {
+        background: var(--cobalt);
+      }
+
+      .mobile-chart-scale-note .scale-active {
+        background: var(--navy);
       }
 
       .chart-shell.compact,
       .map-shell {
         height: 290px;
+      }
+
+      .map-pressure-card {
+        display: none;
+      }
+
+      .mobile-pressure-list {
+        display: block;
+        margin-top: .75rem;
+        padding: .75rem .85rem;
+        border: 1px solid rgba(0, 38, 74, .10);
+        border-radius: 1rem;
+        background: rgba(237, 240, 240, .55);
+      }
+
+      .mobile-pressure-list summary {
+        min-height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--navy);
+        font-size: .82rem;
+        font-weight: 800;
+        cursor: pointer;
+        list-style: none;
+      }
+
+      .mobile-pressure-list summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .mobile-pressure-list summary::after {
+        content: '';
+        flex: 0 0 auto;
+        width: 8px;
+        height: 8px;
+        border-right: 2.5px solid var(--cobalt);
+        border-bottom: 2.5px solid var(--cobalt);
+        transform: rotate(45deg);
+        transition: transform .18s ease;
+      }
+
+      .mobile-pressure-list[open] summary::after {
+        transform: rotate(225deg);
+      }
+
+      .mobile-pressure-list__row {
+        min-width: 0;
+        display: flex;
+        justify-content: space-between;
+        gap: .75rem;
+        padding: .38rem 0;
+        border-top: 1px solid rgba(0, 38, 74, .07);
+        font-size: .8rem;
+      }
+
+      .mobile-pressure-list__row span,
+      .mobile-pressure-list__row strong {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .mobile-pressure-list__row strong {
+        text-align: right;
       }
     }
 
@@ -187,7 +407,7 @@
     @media (max-width: 640px) {
       .profile-crop {
         width: 100%;
-        height: 220px;
+        height: 180px;
       }
     }
 
@@ -196,7 +416,7 @@
       min-width: 135px;
       max-width: 155px;
       max-height: 210px;
-      overflow-y: auto;
+      overflow: hidden;
       background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(0, 38, 74, 0.10);
       border-radius: 1rem;
@@ -206,12 +426,50 @@
     }
 
     .map-pressure-card__title {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .5rem;
+      border: 0;
+      background: transparent;
+      padding: 0;
       font-size: 9px;
+      font-family: inherit;
       font-weight: 800;
+      text-align: left;
       color: rgba(0, 38, 74, 0.55);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-bottom: 0.45rem;
+      cursor: pointer;
+    }
+
+    .map-pressure-card__chevron {
+      flex: 0 0 auto;
+      width: 7px;
+      height: 7px;
+      border-right: 2.5px solid currentColor;
+      border-bottom: 2.5px solid currentColor;
+      transform: rotate(225deg);
+      transition: transform .18s ease;
+    }
+
+    .map-pressure-card__body {
+      max-height: 166px;
+      overflow-y: auto;
+    }
+
+    .map-pressure-card.is-collapsed .map-pressure-card__title {
+      margin-bottom: 0;
+    }
+
+    .map-pressure-card.is-collapsed .map-pressure-card__chevron {
+      transform: rotate(45deg);
+    }
+
+    .map-pressure-card.is-collapsed .map-pressure-card__body {
+      display: none;
     }
 
     .map-pressure-card__row {
@@ -254,6 +512,34 @@
     }
 
     @media print {
+      .desktop-copy {
+        display: block !important;
+      }
+
+      .mobile-copy {
+        display: none !important;
+      }
+
+      .pdf-only {
+        display: block !important;
+      }
+
+      .pdf-topbar {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5mm;
+        margin: 0 5mm;
+        padding: 3mm 0 2.5mm;
+        border-bottom: 1px solid rgba(0, 38, 74, .16);
+        color: var(--navy);
+        font-size: 8pt;
+      }
+
+      .pdf-topbar strong {
+        font-size: 10pt;
+      }
+
       html,
       body {
         width: 210mm;
@@ -283,6 +569,10 @@
 
       header nav {
         display: none !important;
+      }
+
+      .report-nav-slot {
+        height: 0 !important;
       }
 
       header section {
@@ -379,20 +669,18 @@
       }
 
       #contact article > .grid > :first-child {
-        grid-column: span 6 / span 6;
+        grid-column: span 8 / span 8;
       }
 
       #contact article > .grid > :nth-child(2) {
-        grid-column: span 6 / span 6;
-      }
-
-      #contact article > .grid > :nth-child(2) > .grid {
-        grid-template-columns: minmax(0, 1fr) 170px !important;
+        grid-column: span 4 / span 4;
+        min-width: 0;
       }
 
       #contact .profile-crop {
-        width: 170px;
-        height: 170px;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
       }
 
       #contact .space-y-3 {
@@ -460,28 +748,36 @@
 </head>
 
 <body>
+  <div class="pdf-only pdf-topbar">
+    <strong>Dutchwebshark</strong>
+    <span>Wervingsanalyse · Zorgmarkt Nederland · 2026</span>
+  </div>
+
   <main>
     <header class="px-3 md:px-4 pt-5">
       <div class="max-w-[900px] mx-auto">
-        <nav
-          class="sticky top-3 z-[1000] bg-white/95 backdrop-blur border border-softwhite rounded-3xl shadow-card overflow-hidden">
-          <div class="py-2.5">
-            <p class="text-[10px] md:text-xs text-center font-bold uppercase tracking-[0.16em] text-navy/40 mb-2">
-              In deze rapportage
-            </p>
-            <div class="overflow-x-auto">
-              <div class="flex items-center justify-center gap-7 min-w-max px-4">
-                <!-- <a href="#intro" class="nav-link active text-sm font-semibold">Zorgmarkt NL</a> -->
-                <a href="#vig" class="nav-link text-sm font-semibold">VIG & verzorgenden</a>
-                <a href="#verpleegkundigen" class="nav-link text-sm font-semibold">Verpleegkundigen</a>
-                <a href="#kinderopvang" class="nav-link text-sm font-semibold">Kinderopvang / BSO</a>
-                <a href="#ggz" class="nav-link text-sm font-semibold">GGZ-profielen</a>
-                <a href="#artsen" class="nav-link text-sm font-semibold">Artsen & specialisten</a>
-                <!-- <a href="#contact" class="nav-link text-sm font-semibold">Contact</a> -->
+        <div class="report-nav-slot">
+          <nav
+            aria-label="Rapportnavigatie"
+            class="report-nav sticky top-3 z-[1000] bg-white/95 backdrop-blur border border-softwhite rounded-3xl shadow-card overflow-hidden">
+            <div class="py-2.5">
+              <p class="text-[10px] md:text-xs text-center font-bold uppercase tracking-[0.16em] text-navy/40 mb-2">
+                In deze rapportage
+              </p>
+              <div class="overflow-x-auto">
+                <div class="flex items-center justify-center gap-7 min-w-max px-4">
+                  <!-- <a href="#intro" class="nav-link active text-sm font-semibold">Zorgmarkt NL</a> -->
+                  <a href="#vig" class="nav-link text-sm font-semibold">VIG & verzorgenden</a>
+                  <a href="#verpleegkundigen" class="nav-link text-sm font-semibold">Verpleegkundigen</a>
+                  <a href="#kinderopvang" class="nav-link text-sm font-semibold">Kinderopvang / BSO</a>
+                  <a href="#ggz" class="nav-link text-sm font-semibold">GGZ-profielen</a>
+                  <a href="#artsen" class="nav-link text-sm font-semibold">Artsen & specialisten</a>
+                  <!-- <a href="#contact" class="nav-link text-sm font-semibold">Contact</a> -->
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
 
         <section class="pt-7 pb-5">
           <h1 class="text-4xl md:text-5xl font-black tracking-[-0.06em] leading-none">Wervingsanalyse</h1>
@@ -493,26 +789,41 @@
     <section id="intro" class="px-3 md:px-4 py-4">
       <div class="max-w-[900px] mx-auto">
         <div class="mb-5">
-          <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl">
-            Achterblijvende instroom raakt inmiddels meer dan alleen recruitment. Het beperkt de groei die je voor ogen
-            hebt, verhoogt de druk op bestaande teams en kan uiteindelijk de continuïteit van dienstverlening raken. Je
-            ziet het waarschijnlijk al terug in de cijfers: vacatures blijven langer actief dan wenselijk, locaties zijn
-            moeilijker planbaar en dezelfde functies keren structureel terug.
-          </p>
-          <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl mt-4">
-            Toch is "de arbeidsmarkt is krap" geen volledige diagnose. De oorzaak verschilt sterk per doelgroep. Bij VIG
-            & verzorgenden draait het vooral om lokaal bereik, snelheid en conversie. Bij verpleegkundigen om
-            concurrentie tussen zorgdomeinen en een onderscheidende werkomgeving. In de kinderopvang begrenzen
-            kwalificatie en beschikbaarheid de directe instroom. Bij GGZ-profielen en artsen ligt de uitdaging vooral in
-            een kleine, specialistische talentpool die niet met een generieke campagne in beweging komt.
-          </p>
-          <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl mt-4">
-            Effectieve werving begint daarom niet automatisch met meer campagnebudget, maar met een scherpere diagnose.
-            Is de relevante doelgroep onvoldoende in beeld? Overtuigt de arbeidspropositie niet? Gaat conversie verloren
-            door trage opvolging? Of is de talentpool zo klein dat langdurige relatieopbouw noodzakelijk is? In deze
-            rapportage combineren we arbeidsmarktdata met recruitmentcontext, zodat duidelijk wordt waar extra bereik
-            kan renderen, waar het proces sneller moet en waar vooral een inhoudelijke, persoonlijke benadering nodig is.
-          </p>
+          <div class="desktop-copy">
+            <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl">
+              Achterblijvende instroom raakt inmiddels meer dan alleen recruitment. Het beperkt de groei die je voor
+              ogen hebt, verhoogt de druk op bestaande teams en kan uiteindelijk de continuïteit van dienstverlening
+              raken. Je ziet het waarschijnlijk al terug in de cijfers: vacatures blijven langer actief dan wenselijk,
+              locaties zijn moeilijker planbaar en dezelfde functies keren structureel terug.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl mt-4">
+              Toch is “de arbeidsmarkt is krap” geen volledige diagnose. De oorzaak verschilt sterk per doelgroep. Bij
+              VIG & verzorgenden draait het vooral om lokaal bereik, snelheid en conversie. Bij verpleegkundigen om
+              concurrentie tussen zorgdomeinen en een onderscheidende werkomgeving. In de kinderopvang begrenzen
+              kwalificatie en beschikbaarheid de directe instroom. Bij GGZ-profielen en artsen ligt de uitdaging vooral
+              in een kleine, specialistische talentpool die niet met een generieke campagne in beweging komt.
+            </p>
+            <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl mt-4">
+              Effectieve werving begint daarom niet automatisch met meer campagnebudget, maar met een scherpere
+              diagnose. Is de relevante doelgroep onvoldoende in beeld? Overtuigt de arbeidspropositie niet? Gaat
+              conversie verloren door trage opvolging? Of is de talentpool zo klein dat langdurige relatieopbouw
+              noodzakelijk is? In deze rapportage combineren we arbeidsmarktdata met recruitmentcontext, zodat
+              duidelijk wordt waar extra bereik kan renderen, waar het proces sneller moet en waar vooral een
+              inhoudelijke, persoonlijke benadering nodig is.
+            </p>
+          </div>
+
+          <div class="mobile-copy">
+            <p class="text-base leading-relaxed text-navy/72">
+              Zorgtekorten raken groei, roosters en continuïteit. Maar “de arbeidsmarkt is krap” is geen volledige
+              diagnose. Bij volumeprofielen draait het om bereik en conversie, bij verpleegkundigen om een
+              onderscheidende werkomgeving en bij specialisten om een kleine talentpool.
+            </p>
+            <p class="text-base leading-relaxed text-navy/72 mt-3">
+              Effectieve werving begint daarom met een scherpere diagnose. Dit rapport laat per doelgroep zien waar
+              extra bereik rendeert, waar het proces sneller moet en waar persoonlijke relatieopbouw nodig is.
+            </p>
+          </div>
         </div>
 
         <div class="mb-3">
@@ -523,34 +834,46 @@
         <div class="grid md:grid-cols-3 gap-4">
           <article class="glass-card rounded-4xl p-6 insight-card">
             <h3 class="text-xl font-black insight-title">Volume vs. Schaarste</h3>
-            <p class="text-navy/65 mt-3 leading-relaxed">
+            <p class="desktop-copy text-navy/65 mt-3 leading-relaxed">
               Niet iedere moeilijk vervulbare vacature heeft hetzelfde probleem. Bij volumeprofielen is de potentiële
               doelgroep groter, maar gaat rendement verloren door trage opvolging, onduidelijke voorwaarden of te veel
               stappen tussen reactie en persoonlijk contact. Bij schaarsteprofielen is de relevante talentpool
               daadwerkelijk klein en moet een professional inhoudelijk worden overtuigd. Dat bepaalt waar budget het
               meeste oplevert: in meer bereik, een hogere conversie of langdurige relatieopbouw.
             </p>
+            <p class="mobile-copy text-navy/65 mt-3 leading-relaxed">
+              Volumeprofielen verliezen kandidaten vooral in opvolging en conversie. Bij schaarsteprofielen is de
+              relevante talentpool werkelijk klein. Dat bepaalt of budget naar bereik, proces of relatieopbouw moet.
+            </p>
           </article>
 
           <article class="glass-card rounded-4xl p-6 insight-card">
             <h3 class="text-xl font-black insight-title">De Regionale Paradox</h3>
-            <p class="text-navy/65 mt-3 leading-relaxed">
+            <p class="desktop-copy text-navy/65 mt-3 leading-relaxed">
               De Randstad domineert in absoluut vacaturevolume, maar middelgrote zorgplaatsen laten regelmatig een
               hogere relatieve zorgvraag zien. Daar rust een relatief grote personeelsvraag op een kleinere lokale
-              bevolkingsbasis. Kandidaten beoordelen werk bovendien niet per gemeentegrens, maar op praktische reistijd,
-              bereikbaarheid en de diensten die zij moeten werken. Een regionale aanpak moet daarom worden opgebouwd
-              rond realistische reisafstandclusters en het concrete aanbod per locatie.
+              bevolkingsbasis. Kandidaten beoordelen werk bovendien niet per gemeentegrens, maar op praktische
+              reistijd, bereikbaarheid en de diensten die zij moeten werken. Een regionale aanpak moet daarom worden
+              opgebouwd rond realistische reisafstandclusters en het concrete aanbod per locatie.
+            </p>
+            <p class="mobile-copy text-navy/65 mt-3 leading-relaxed">
+              De Randstad heeft het grootste volume, maar middelgrote plaatsen kennen geregeld meer vraag per inwoner.
+              Bouw regionale werving daarom rond realistische reistijd en het concrete aanbod per locatie.
             </p>
           </article>
 
           <article class="glass-card rounded-4xl p-6 insight-card">
             <h3 class="text-xl font-black insight-title">De zichtbare talentpool raakt verzadigd</h3>
-            <p class="text-navy/65 mt-3 leading-relaxed">
+            <p class="desktop-copy text-navy/65 mt-3 leading-relaxed">
               Slechts circa 8% van de zichtbare LinkedIn-zorgtalentpool staat expliciet open voor een nieuwe kans. Dat
               betekent niet dat de overige professionals onbereikbaar zijn, maar wel dat zij zelden reageren op een
               standaardvacature. Generieke campagnes bereiken daardoor steeds opnieuw dezelfde beperkte groep actieve
               kandidaten. Extra instroom vraagt om referral, gerichte sourcing, herbenadering van eerdere contacten en
               een arbeidspropositie die ook zonder directe vertrekintentie relevant is.
+            </p>
+            <p class="mobile-copy text-navy/65 mt-3 leading-relaxed">
+              Slechts circa 8% van de zichtbare LinkedIn-zorgtalentpool staat expliciet open voor een nieuwe kans.
+              Extra instroom vraagt daarom om referral, gerichte sourcing en herbenadering van eerdere contacten.
             </p>
           </article>
         </div>
@@ -567,25 +890,43 @@
             <div class="mt-4 rounded-3xl bg-cobalt/5 border border-cobalt/10 p-4 md:p-5">
               <p class="font-black text-sm">Wat de cijfers in samenhang laten zien</p>
               <div class="analysis-copy text-sm md:text-base text-navy/70 mt-2 leading-relaxed">
-                <p>
-                  Hoge vraag en een groot aandeel nog actieve vacatures vallen niet automatisch samen. Dat is belangrijk,
-                  omdat beide signalen om een andere interventie kunnen vragen. Een hoog vacaturevolume kan wijzen op een
-                  structurele instroombehoefte, terwijl een groot aandeel nog actieve vacatures ook aanleiding geeft om
-                  te kijken naar propositie, opvolgsnelheid en uitval in het proces.
-                </p>
-                <p>
-                  Bij volumeprofielen ligt de grootste winst doorgaans in lokaal bereik, snelle opvolging en een korte
-                  route naar persoonlijk contact. Bij specialistische profielen wordt succes sterker bepaald door de
-                  omvang van de relevante talentpool, vakinhoudelijke overtuiging en langdurige relatieopbouw. Eén
-                  centrale wervingsaanpak voor alle zorgdoelgroepen leidt daardoor bijna onvermijdelijk tot verspilling
-                  van bereik, tijd of budget.
-                </p>
+                <div class="desktop-copy">
+                  <p>
+                    Hoge vraag en een groot aandeel nog actieve vacatures vallen niet automatisch samen. Dat is
+                    belangrijk, omdat beide signalen om een andere interventie kunnen vragen. Een hoog vacaturevolume
+                    kan wijzen op een structurele instroombehoefte, terwijl een groot aandeel nog actieve vacatures ook
+                    aanleiding geeft om te kijken naar propositie, opvolgsnelheid en uitval in het proces.
+                  </p>
+                  <p>
+                    Bij volumeprofielen ligt de grootste winst doorgaans in lokaal bereik, snelle opvolging en een korte
+                    route naar persoonlijk contact. Bij specialistische profielen wordt succes sterker bepaald door de
+                    omvang van de relevante talentpool, vakinhoudelijke overtuiging en langdurige relatieopbouw. Eén
+                    centrale wervingsaanpak voor alle zorgdoelgroepen leidt daardoor bijna onvermijdelijk tot
+                    verspilling van bereik, tijd of budget.
+                  </p>
+                </div>
+
+                <div class="mobile-copy">
+                  <p>
+                    Hoge vraag en een groot aandeel nog actieve vacatures zijn verschillende signalen. Het eerste wijst
+                    op structurele instroombehoefte; het tweede vraagt ook om onderzoek naar propositie en conversie.
+                  </p>
+                  <p>
+                    Volumeprofielen vragen vooral om lokaal bereik en snelle opvolging. Bij specialistische profielen
+                    bepalen vakinhoudelijke overtuiging en langdurige relatieopbouw het succes.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="chart-shell">
+          <div class="chart-shell overview-chart-shell">
             <canvas id="overviewChart"></canvas>
+          </div>
+
+          <div class="mobile-chart-scale-note" aria-label="Uitleg van de twee schalen">
+            <span><i class="scale-active"></i>Bovenste schaal: percentage nog actief (0–60%)</span>
+            <span><i class="scale-demand"></i>Onderste schaal: vacatures per 100.000 inwoners (0–90)</span>
           </div>
 
           <p class="text-xs text-navy/40 mt-3">
@@ -601,7 +942,7 @@
     <section id="vig" class="group-section px-4 md:px-7 py-4">
       <div class="max-w-[900px] mx-auto">
         <article class="glass-card rounded-4xl overflow-hidden">
-          <div class="p-5 md:p-6">
+          <div class="section-copy p-5 md:p-6">
             <div class="flex items-start gap-4 mb-6">
               <span class="section-number text-4xl font-black text-bonding">01</span>
               <div>
@@ -610,9 +951,9 @@
               </div>
             </div>
 
-            <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
+            <div class="section-summary rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
               <p class="font-black">Waar de conversie wordt gewonnen of verloren</p>
-              <div class="analysis-copy text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
+              <div class="desktop-copy analysis-copy text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
                 <p>
                   VIG & verzorgenden vormen vooral een volume- en conversievraagstuk. De vraag is breed verspreid, maar
                   werkgevers concurreren per locatie vaak om dezelfde professionals. Meer bereik kan de instroom
@@ -628,15 +969,27 @@
                   De grootste winst ligt in een lokale, continu actieve instroomaanpak met weinig drempels. Meet per
                   locatie hoeveel kandidaten doorstromen van reactie naar contact, kwalificatie, afspraak en
                   indiensttreding. Extra mediabudget zonder snellere opvolging of een concretere locatiepropositie
-                  vergroot vooral het aantal leads dat alsnog verdwijnt. Weet jouw organisatie waar geschikte kandidaten
-                  in deze funnel verloren gaan?
+                  vergroot vooral het aantal leads dat alsnog verdwijnt. Weet jouw organisatie waar geschikte
+                  kandidaten in deze funnel verloren gaan?
+                </p>
+              </div>
+
+              <div class="mobile-copy analysis-copy text-navy/72 mt-2 leading-relaxed text-base">
+                <p>
+                  VIG & verzorgenden vormen vooral een volume- en conversievraagstuk. De vraag is breed verspreid, maar
+                  werkgevers concurreren lokaal om dezelfde professionals. Meer bereik werkt alleen bij snelle,
+                  persoonlijke opvolging.
+                </p>
+                <p>
+                  Rooster, contracturen, reistijd en werkdruk zijn vaak doorslaggevend. Maak die voorwaarden per
+                  locatie vooraf duidelijk en meet waar kandidaten in de funnel afhaken.
                 </p>
               </div>
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 border-t border-softwhite">
-            <div class="p-5 md:p-6 md:border-r border-softwhite">
+            <div class="visual-panel p-5 md:p-6 md:border-r border-softwhite">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <h3 class="text-lg md:text-xl font-black">Relatieve zorgvraag per plaats</h3>
 
@@ -649,7 +1002,7 @@
               </p>
             </div>
 
-            <div class="p-5 md:p-6">
+            <div class="visual-panel p-5 md:p-6">
               <h3 class="text-lg md:text-xl font-black mb-4">Percentage vacatures nog actief binnen de 16-wekenperiode
               </h3>
               <div class="chart-shell compact"><canvas id="vigChart"></canvas></div>
@@ -665,7 +1018,7 @@
     <section id="verpleegkundigen" class="group-section px-4 md:px-7 py-4">
       <div class="max-w-[900px] mx-auto">
         <article class="glass-card rounded-4xl overflow-hidden">
-          <div class="p-5 md:p-6">
+          <div class="section-copy p-5 md:p-6">
             <div class="flex items-start gap-4 mb-6">
               <span class="section-number text-4xl font-black text-bonding">02</span>
               <div>
@@ -674,16 +1027,34 @@
               </div>
             </div>
 
-            <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
-              <p class="font-black">Conclusie</p>
-              <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                Bij verpleegkundigen ontstaat de druk doordat meerdere zorgdomeinen om dezelfde professionals concurreren. Een kandidaat kan kiezen tussen ziekenhuis, VVT, thuiszorg, GGZ, gehandicaptenzorg en flex, waardoor één algemene propositie weinig onderscheid maakt. Voor een recruitmentorganisatie is segmentatie daarom essentieel: maak per specialisme en werkomgeving concreet wat anders is aan autonomie, werkdruk, team, rooster en ontwikkeling. Bouw daarnaast een eigen talentpool op en onderhoud contact buiten directe sollicitatiemomenten via referral, events en persoonlijke activatie. De commerciële wervingsvraag is niet alleen hoe meer mensen worden bereikt, maar waarom een verpleegkundige juist voor deze organisatie en dit zorgdomein zou bewegen.
-              </p>
+            <div class="section-summary rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
+              <p class="font-black">Waarom een algemene propositie onvoldoende onderscheidt</p>
+              <div class="desktop-copy text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
+                Bij verpleegkundigen ontstaat de druk doordat meerdere zorgdomeinen om dezelfde professionals
+                concurreren. Een kandidaat kan kiezen tussen ziekenhuis, VVT, thuiszorg, GGZ, gehandicaptenzorg en
+                flex, waardoor één algemene propositie weinig onderscheid maakt. Voor een recruitmentorganisatie is
+                segmentatie daarom essentieel: maak per specialisme en werkomgeving concreet wat anders is aan
+                autonomie, werkdruk, team, rooster en ontwikkeling. Bouw daarnaast een eigen talentpool op en onderhoud
+                contact buiten directe sollicitatiemomenten via referral, events en persoonlijke activatie. De
+                commerciële wervingsvraag is niet alleen hoe meer mensen worden bereikt, maar waarom een
+                verpleegkundige juist voor deze organisatie en dit zorgdomein zou bewegen.
+              </div>
+
+              <div class="mobile-copy analysis-copy text-navy/72 mt-2 leading-relaxed text-base">
+                <p>
+                  Meerdere zorgdomeinen concurreren om dezelfde verpleegkundigen. Een algemene propositie maakt
+                  onvoldoende duidelijk waarom iemand juist voor deze organisatie en werkomgeving zou kiezen.
+                </p>
+                <p>
+                  Segmenteer daarom per specialisme en werkomgeving. Maak autonomie, werkdruk, team, rooster en
+                  ontwikkeling concreet en onderhoud per segment een eigen talentpool.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 border-t border-softwhite">
-            <div class="p-5 md:p-6 md:border-r border-softwhite">
+            <div class="visual-panel p-5 md:p-6 md:border-r border-softwhite">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <h3 class="text-lg md:text-xl font-black">Relatieve zorgvraag per plaats</h3>
 
@@ -696,7 +1067,7 @@
               </p>
             </div>
 
-            <div class="p-5 md:p-6">
+            <div class="visual-panel p-5 md:p-6">
               <h3 class="text-lg md:text-xl font-black mb-4">Percentage vacatures nog actief binnen de 16-wekenperiode
               </h3>
               <div class="chart-shell compact"><canvas id="nursesChart"></canvas></div>
@@ -711,7 +1082,7 @@
     <section id="kinderopvang" class="group-section px-4 md:px-7 py-4">
       <div class="max-w-[900px] mx-auto">
         <article class="glass-card rounded-4xl overflow-hidden">
-          <div class="p-5 md:p-6">
+          <div class="section-copy p-5 md:p-6">
             <div class="flex items-start gap-4 mb-6">
               <span class="section-number text-4xl font-black text-bonding">03</span>
               <div>
@@ -720,16 +1091,34 @@
               </div>
             </div>
 
-            <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
-              <p class="font-black">Conclusie</p>
-              <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                De kinderopvangmarkt wordt minder door bereik begrensd dan door kwalificatie, beschikbaarheid en werkuren. Een grote groep geïnteresseerden kan niet direct instromen, terwijl middaguren en lokale locaties de inzetbaarheid verder beperken. Voor een recruitmentorganisatie betekent dit dat de kwalificatieroute onderdeel van de campagne moet zijn. Maak vóór de sollicitatie duidelijk welke diploma’s geldig zijn, welke uren worden aangeboden en welke BBL- of zij-instroomroute mogelijk is. Richt de funnel zo in dat kandidaten direct op opleiding, locatie en beschikbaarheid worden gescreend. Wie alleen concurreert om de bestaande gekwalificeerde pool, blijft afhankelijk van dezelfde beperkte groep; duurzame groei vraagt om het actief vergroten van de instroom.
-              </p>
+            <div class="section-summary rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
+              <p class="font-black">Waar kwalificatie en beschikbaarheid de instroom begrenzen</p>
+              <div class="desktop-copy text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
+                De kinderopvangmarkt wordt minder door bereik begrensd dan door kwalificatie, beschikbaarheid en
+                werkuren. Een grote groep geïnteresseerden kan niet direct instromen, terwijl middaguren en lokale
+                locaties de inzetbaarheid verder beperken. Voor een recruitmentorganisatie betekent dit dat de
+                kwalificatieroute onderdeel van de campagne moet zijn. Maak vóór de sollicitatie duidelijk welke
+                diploma’s geldig zijn, welke uren worden aangeboden en welke BBL- of zij-instroomroute mogelijk is.
+                Richt de funnel zo in dat kandidaten direct op opleiding, locatie en beschikbaarheid worden gescreend.
+                Wie alleen concurreert om de bestaande gekwalificeerde pool, blijft afhankelijk van dezelfde beperkte
+                groep; duurzame groei vraagt om het actief vergroten van de instroom.
+              </div>
+
+              <div class="mobile-copy analysis-copy text-navy/72 mt-2 leading-relaxed text-base">
+                <p>
+                  In de kinderopvang begrenzen kwalificatie, beschikbaarheid en werkuren de instroom sterker dan bereik.
+                  Veel geïnteresseerden kunnen daardoor niet direct beginnen.
+                </p>
+                <p>
+                  Maak diploma-eisen, uren en BBL- of zij-instroomroutes vooraf duidelijk. Screen direct op opleiding,
+                  locatie en beschikbaarheid en vergroot zo actief de gekwalificeerde instroom.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 border-t border-softwhite">
-            <div class="p-5 md:p-6 md:border-r border-softwhite">
+            <div class="visual-panel p-5 md:p-6 md:border-r border-softwhite">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <h3 class="text-lg md:text-xl font-black">Relatieve zorgvraag per plaats</h3>
 
@@ -742,7 +1131,7 @@
               </p>
             </div>
 
-            <div class="p-5 md:p-6">
+            <div class="visual-panel p-5 md:p-6">
               <h3 class="text-lg md:text-xl font-black mb-4">Percentage vacatures nog actief binnen de 16-wekenperiode
               </h3>
               <div class="chart-shell compact"><canvas id="childcareChart"></canvas></div>
@@ -757,7 +1146,7 @@
     <section id="ggz" class="group-section px-4 md:px-7 py-4">
       <div class="max-w-[900px] mx-auto">
         <article class="glass-card rounded-4xl overflow-hidden">
-          <div class="p-5 md:p-6">
+          <div class="section-copy p-5 md:p-6">
             <div class="flex items-start gap-4 mb-6">
               <span class="section-number text-4xl font-black text-bonding">04</span>
               <div>
@@ -766,16 +1155,35 @@
               </div>
             </div>
 
-            <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
-              <p class="font-black">Conclusie</p>
-              <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                Bij GGZ-profielen verhult een lager vacaturevolume hoe moeilijk de markt werkelijk is. De relevante doelgroep is kleiner, inhoudelijk kritisch en gevoelig voor behandelvisie, autonomie, caseload, supervisie en teamkwaliteit. Generieke campagnes leveren daardoor snel bereik op zonder voldoende overtuigingskracht. Voor een recruitmentorganisatie moet de inhoudelijke propositie vóór de mediakeuze worden ontwikkeld: waarom is het vak hier inhoudelijk aantrekkelijker en welke professionele ruimte krijgt iemand werkelijk? Combineer dit met gerichte sourcing, referral en langdurige nurturing van bekende contacten. De grootste conversiewinst ontstaat niet door meer standaardvacatureverkeer, maar door geloofwaardig persoonlijk contact met professionals die niet actief zoeken en eerst inhoudelijk overtuigd moeten worden.
-              </p>
+            <div class="section-summary rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
+              <p class="font-black">Waarom inhoudelijke overtuiging doorslaggevend is</p>
+              <div class="desktop-copy text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
+                Bij GGZ-profielen verhult een lager vacaturevolume hoe moeilijk de markt werkelijk is. De relevante
+                doelgroep is kleiner, inhoudelijk kritisch en gevoelig voor behandelvisie, autonomie, caseload,
+                supervisie en teamkwaliteit. Generieke campagnes leveren daardoor snel bereik op zonder voldoende
+                overtuigingskracht. Voor een recruitmentorganisatie moet de inhoudelijke propositie vóór de mediakeuze
+                worden ontwikkeld: waarom is het vak hier inhoudelijk aantrekkelijker en welke professionele ruimte
+                krijgt iemand werkelijk? Combineer dit met gerichte sourcing, referral en langdurige nurturing van
+                bekende contacten. De grootste conversiewinst ontstaat niet door meer standaardvacatureverkeer, maar
+                door geloofwaardig persoonlijk contact met professionals die niet actief zoeken en eerst inhoudelijk
+                overtuigd moeten worden.
+              </div>
+
+              <div class="mobile-copy analysis-copy text-navy/72 mt-2 leading-relaxed text-base">
+                <p>
+                  Het lagere vacaturevolume verhult de werkelijke schaarste. GGZ-professionals beoordelen vooral
+                  behandelvisie, autonomie, caseload, supervisie en teamkwaliteit.
+                </p>
+                <p>
+                  Generieke campagnes overtuigen onvoldoende. Ontwikkel eerst een inhoudelijke propositie en combineer
+                  die met gerichte sourcing, referral en langdurig persoonlijk contact.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 border-t border-softwhite">
-            <div class="p-5 md:p-6 md:border-r border-softwhite">
+            <div class="visual-panel p-5 md:p-6 md:border-r border-softwhite">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <h3 class="text-lg md:text-xl font-black">Relatieve zorgvraag per plaats</h3>
 
@@ -788,7 +1196,7 @@
               </p>
             </div>
 
-            <div class="p-5 md:p-6">
+            <div class="visual-panel p-5 md:p-6">
               <h3 class="text-lg md:text-xl font-black mb-4">Percentage vacatures nog actief binnen de 16-wekenperiode
               </h3>
               <div class="chart-shell compact"><canvas id="ggzChart"></canvas></div>
@@ -803,7 +1211,7 @@
     <section id="artsen" class="group-section px-4 md:px-7 py-4">
       <div class="max-w-[900px] mx-auto">
         <article class="glass-card rounded-4xl overflow-hidden">
-          <div class="p-5 md:p-6">
+          <div class="section-copy p-5 md:p-6">
             <div class="flex items-start gap-4 mb-6">
               <span class="section-number text-4xl font-black text-bonding">05</span>
               <div>
@@ -812,16 +1220,34 @@
               </div>
             </div>
 
-            <div class="rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
-              <p class="font-black">Conclusie</p>
-              <p class="text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
-                Voor artsen en medisch specialisten is de arbeidsmarkt fundamenteel anders dan voor de meeste andere zorgdoelgroepen. Met 3.117 vacatures binnen de 25 grootste plaatsen en een gemiddelde looptijd waarbij 45,5% van de vacatures na 16 weken nog openstaat, is duidelijk dat vraag langdurig blijft bestaan. Opvallend is bovendien dat de hoogste relatieve zorgvraag niet uitsluitend in de grootste steden ligt, maar ook in plaatsen als Nieuwegein, Zwolle, Maastricht en Gouda. Succesvolle werving vraagt daarom om een regionale én vakinhoudelijke aanpak. Niet de grootste campagne wint, maar de organisatie die het juiste netwerk bereikt, snel schakelt en een geloofwaardig inhoudelijk verhaal biedt. Gerichte sourcing, relatieopbouw en een kort besluitvormingsproces vormen daarmee de belangrijkste succesfactoren.
-              </p>
+            <div class="section-summary rounded-3xl bg-cobalt/5 border border-cobalt/10 p-5 md:p-6">
+              <p class="font-black">Waar netwerk, inhoud en snelheid het verschil maken</p>
+              <div class="desktop-copy text-navy/72 mt-2 leading-relaxed text-base md:text-lg">
+                Voor artsen en medisch specialisten is de arbeidsmarkt fundamenteel anders dan voor de meeste andere
+                zorgdoelgroepen. Met 3.117 vacatures binnen de 25 grootste plaatsen en 45,5% dat aan het einde van de
+                meetperiode nog actief was, is duidelijk dat de vraag langdurig blijft bestaan.
+                Opvallend is bovendien dat de hoogste relatieve zorgvraag niet uitsluitend in de grootste steden ligt,
+                maar ook in plaatsen als Nieuwegein, Zwolle, Maastricht en Gouda. Succesvolle werving vraagt daarom om
+                een regionale én vakinhoudelijke aanpak. Niet de grootste campagne wint, maar de organisatie die het
+                juiste netwerk bereikt, snel schakelt en een geloofwaardig inhoudelijk verhaal biedt. Gerichte sourcing,
+                relatieopbouw en een kort besluitvormingsproces vormen daarmee de belangrijkste succesfactoren.
+              </div>
+
+              <div class="mobile-copy analysis-copy text-navy/72 mt-2 leading-relaxed text-base">
+                <p>
+                  De vraag naar artsen en specialisten blijft langdurig bestaan: 45,5% van de 3.117 vacatures binnen de
+                  25 grootste plaatsen was aan het einde van de meetperiode nog actief.
+                </p>
+                <p>
+                  De hoogste relatieve vraag ligt ook buiten de grootste steden. Succes vraagt daarom om regionale
+                  sourcing, een geloofwaardig vakinhoudelijk verhaal en een kort besluitvormingsproces.
+                </p>
+              </div>
             </div>
           </div>
 
           <div class="grid md:grid-cols-2 border-t border-softwhite">
-            <div class="p-5 md:p-6 md:border-r border-softwhite">
+            <div class="visual-panel p-5 md:p-6 md:border-r border-softwhite">
               <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
                 <h3 class="text-lg md:text-xl font-black">Relatieve zorgvraag per plaats</h3>
               </div>
@@ -832,7 +1258,7 @@
               </p>
             </div>
 
-            <div class="p-5 md:p-6">
+            <div class="visual-panel p-5 md:p-6">
               <h3 class="text-lg md:text-xl font-black mb-4">Percentage vacatures nog actief binnen de 16-wekenperiode</h3>
               <div class="chart-shell compact"><canvas id="doctorsChart"></canvas></div>
               <p class="text-xs text-navy/40 mt-2">
@@ -846,7 +1272,7 @@
 
     <section id="contact" class="px-3 md:px-4 py-7">
       <div class="max-w-[900px] mx-auto">
-        <article class="rounded-4xl bg-gradient-to-r from-cobalt/5 to-bonding/15 p-6 md:p-7">
+        <article class="contact-card rounded-4xl bg-gradient-to-r from-cobalt/5 to-bonding/15 p-6 md:p-7">
           <div class="mb-6">
             <p class="text-sm font-black uppercase tracking-[0.16em] text-cobalt">Van arbeidsmarktdata naar meer instroom</p>
             <h2 class="text-2xl md:text-3xl font-black tracking-[-0.06em] mt-2">
@@ -856,7 +1282,7 @@
 
           <div class="grid md:grid-cols-12 gap-7 items-start">
             <div class="md:col-span-8">
-              <div class="analysis-copy text-navy/68 text-lg leading-relaxed max-w-3xl">
+              <div class="desktop-copy analysis-copy text-navy/68 text-lg leading-relaxed max-w-3xl">
                 <p>
                   Arbeidsmarktdata laat zien waar de personeelsdruk ontstaat. Jouw eigen funneldata laat zien waarom die
                   druk nog onvoldoende wordt omgezet in instroom.
@@ -871,6 +1297,17 @@
                 <p>
                   Het resultaat is geen algemene arbeidsmarktanalyse, maar een concrete prioritering van de doelgroepen,
                   locaties en funnelstappen waar jouw organisatie de meeste instroom kan winnen.
+                </p>
+              </div>
+
+              <div class="mobile-copy analysis-copy text-navy/68 text-base leading-relaxed max-w-3xl">
+                <p>
+                  Arbeidsmarktdata laat zien waar de personeelsdruk ontstaat. Funneldata laat zien waarom die druk nog
+                  onvoldoende wordt omgezet in instroom.
+                </p>
+                <p>
+                  Dutchwebshark combineert beide en maakt concreet in welke doelgroepen, locaties en funnelstappen de
+                  meeste instroom te winnen is.
                 </p>
               </div>
 
@@ -902,7 +1339,7 @@
           </div>
         </article>
 
-        <footer class="pt-7">
+        <footer class="pdf-only pdf-report-footer pt-7">
           <p class="text-xs text-navy/35 leading-relaxed">
             Bronnen en periode: Jobfeed/Textkernel, laatste 16 weken, rapporten aangemaakt 16-07-2026 en 20-07-2026; CBS voorlopige
             inwonersaantallen per gemeente op 1-1-2026; LinkedIn Talent Insights voor eerdere talentpoolanalyses.
@@ -933,8 +1370,7 @@
       afterDatasetsDraw(chart, args, options) {
         if (!options || !options.enabled || chart.options.indexAxis !== 'y') return;
 
-        const { ctx, chartArea, scales } = chart;
-        const xScale = scales.x;
+        const { ctx, chartArea } = chart;
         const meta = chart.getDatasetMeta(0);
         const breakX = chartArea.left + 8;
 
@@ -970,11 +1406,6 @@
         ctx.lineTo(breakX + 5, axisY - 4);
         ctx.stroke();
 
-        ctx.fillStyle = 'rgba(0, 38, 74, 0.46)';
-        ctx.font = '9px Inter';
-        ctx.textAlign = 'left';
-        ctx.fillText(`as vanaf ${xScale.min}%`, chartArea.left + 18, chartArea.bottom + 20);
-
         ctx.restore();
       }
     };
@@ -1007,130 +1438,227 @@
       return lines;
     }
 
-    new Chart(document.getElementById('overviewChart'), {
-      type: 'bar',
-      data: {
-        labels: [
-          'VIG & verzorgenden',
-          'Verpleegkundigen',
-          'Kinderopvang / BSO',
-          'GGZ-profielen',
-          'Artsen & specialisten'
-        ].map(v => wrapLabel(v, 18)),
-        datasets: [
-          {
-            type: 'bar',
-            label: 'Vacatures per 100.000 inwoners',
-            data: [63.0, 80.1, 37.3, 29.7, 53.3],
-            backgroundColor: COLORS.cobalt,
-            borderRadius: 10,
-            barThickness: 28,
-            yAxisID: 'y',
-            order: 2,
-            datalabels: {
-              color: COLORS.navy,
-              anchor: 'end',
-              align: 'top',
-              formatter: value => value === null ? '' : value.toLocaleString('nl-NL', { maximumFractionDigits: 1 }),
-              font: { weight: 900, size: 12 }
-            }
-          },
-          {
-            type: 'line',
-            label: 'Percentage vacatures nog actief binnen de meetperiode',
-            data: [45.7, 44.1, 42.4, 43.7, 45.5],
-            borderColor: COLORS.navy,
-            backgroundColor: COLORS.navy,
-            pointBackgroundColor: COLORS.navy,
-            pointBorderColor: '#ffffff',
-            pointBorderWidth: 2,
-            pointRadius: 5,
-            pointHoverRadius: 7,
-            borderWidth: 3,
-            tension: 0.28,
-            fill: false,
-            yAxisID: 'y1',
-            order: 1,
-            datalabels: {
-              color: COLORS.navy,
-              backgroundColor: 'rgba(255,255,255,.92)',
-              borderColor: 'rgba(0,38,74,.12)',
-              borderWidth: 1,
-              borderRadius: 8,
-              padding: 4,
-              anchor: 'end',
-              align: 'right',
-              offset: 8,
-              formatter: value => `${value.toLocaleString('nl-NL')}%`,
-              font: { weight: 900, size: 11 }
-            }
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        layout: { padding: { top: 28, left: 6, right: 10, bottom: 8 } },
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-          legend: {
-            position: 'bottom',
-            align: 'center',
-            labels: {
-              usePointStyle: true,
-              boxWidth: 8,
-              padding: 12,
-              font: { weight: 400, size: 10 }
-            }
-          },
-          tooltip: {
-            callbacks: {
-              title: items => Array.isArray(items[0].label) ? items[0].label.join(' ') : items[0].label,
-              label: context => {
-                if (context.raw === null) return `${context.dataset.label}: niet beschikbaar`;
-                if (context.dataset.type === 'line') return `${context.dataset.label}: ${context.raw}%`;
-                return `${context.dataset.label}: ${context.raw.toLocaleString('nl-NL')} per 100.000`;
-              }
-            }
+    const overviewLabels = [
+      'VIG & verzorgenden',
+      'Verpleegkundigen',
+      'Kinderopvang / BSO',
+      'GGZ-profielen',
+      'Artsen & specialisten'
+    ];
+
+    const overviewDemand = [63.0, 80.1, 37.3, 29.7, 53.3];
+    const overviewActive = [45.7, 44.1, 42.4, 43.7, 45.5];
+    const overviewMediaQuery = window.matchMedia('(max-width: 640px)');
+    let overviewChart;
+
+    function overviewTooltipTitle(items) {
+      return Array.isArray(items[0].label) ? items[0].label.join(' ') : items[0].label;
+    }
+
+    function renderOverviewChart(useMobileLayout = overviewMediaQuery.matches) {
+      if (overviewChart) overviewChart.destroy();
+
+      const mobileDatasets = [
+        {
+          label: 'Vacatures per 100.000',
+          data: overviewDemand,
+          backgroundColor: COLORS.cobalt,
+          borderRadius: 7,
+          categoryPercentage: .68,
+          barPercentage: .9,
+          maxBarThickness: 12,
+          xAxisID: 'xDemand',
+          datalabels: {
+            color: COLORS.navy,
+            anchor: 'end',
+            align: 'right',
+            formatter: value => value.toLocaleString('nl-NL', { maximumFractionDigits: 1 }),
+            font: { weight: 900, size: 10 }
           }
         },
-        scales: {
-          x: {
-            grid: { display: false },
-            ticks: { color: COLORS.muted, font: { weight: 700, size: 12 }, autoSkip: false, maxRotation: 0, minRotation: 0, padding: 8 },
-            border: { display: false }
-          },
-          y: {
-            position: 'left',
-            beginAtZero: true,
-            suggestedMax: 90,
-            title: {
-              display: true,
-              text: 'Vacatures per 100.000 inwoners',
-              color: COLORS.muted,
-              font: { weight: 700, size: 11 }
-            },
-            grid: { color: COLORS.grid },
-            ticks: { color: COLORS.muted },
-            border: { display: false }
-          },
-          y1: {
-            position: 'right',
-            min: 0,
-            max: 60,
-            title: {
-              display: true,
-              text: '% nog actief binnen de meetperiode',
-              color: COLORS.muted,
-              font: { weight: 700, size: 11 }
-            },
-            grid: { drawOnChartArea: false },
-            ticks: { color: COLORS.muted, callback: value => `${value}%` },
-            border: { display: false }
+        {
+          label: '% nog actief',
+          data: overviewActive,
+          backgroundColor: COLORS.navy,
+          borderRadius: 7,
+          categoryPercentage: .68,
+          barPercentage: .9,
+          maxBarThickness: 12,
+          xAxisID: 'xActive',
+          datalabels: {
+            color: COLORS.navy,
+            anchor: 'end',
+            align: 'right',
+            formatter: value => `${value.toLocaleString('nl-NL')}%`,
+            font: { weight: 900, size: 10 }
           }
         }
-      }
-    });
+      ];
+
+      const desktopDatasets = [
+        {
+          type: 'bar',
+          label: 'Vacatures per 100.000 inwoners',
+          data: overviewDemand,
+          backgroundColor: COLORS.cobalt,
+          borderRadius: 10,
+          barThickness: 28,
+          yAxisID: 'y',
+          order: 2,
+          datalabels: {
+            color: COLORS.navy,
+            anchor: 'end',
+            align: 'top',
+            formatter: value => value.toLocaleString('nl-NL', { maximumFractionDigits: 1 }),
+            font: { weight: 900, size: 12 }
+          }
+        },
+        {
+          type: 'line',
+          label: 'Percentage vacatures nog actief binnen de meetperiode',
+          data: overviewActive,
+          borderColor: COLORS.navy,
+          backgroundColor: COLORS.navy,
+          pointBackgroundColor: COLORS.navy,
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: 5,
+          pointHoverRadius: 7,
+          borderWidth: 3,
+          tension: .28,
+          fill: false,
+          yAxisID: 'y1',
+          order: 1,
+          datalabels: {
+            color: COLORS.navy,
+            backgroundColor: 'rgba(255,255,255,.92)',
+            borderColor: 'rgba(0,38,74,.12)',
+            borderWidth: 1,
+            borderRadius: 8,
+            padding: 4,
+            anchor: 'end',
+            align: 'right',
+            offset: 8,
+            formatter: value => `${value.toLocaleString('nl-NL')}%`,
+            font: { weight: 900, size: 11 }
+          }
+        }
+      ];
+
+      overviewChart = new Chart(document.getElementById('overviewChart'), {
+        type: 'bar',
+        data: {
+          labels: overviewLabels.map(label => wrapLabel(label, useMobileLayout ? 19 : 18)),
+          datasets: useMobileLayout ? mobileDatasets : desktopDatasets
+        },
+        options: useMobileLayout ? {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 4, right: 38, bottom: 4, left: 0 } },
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              align: 'start',
+              labels: { usePointStyle: true, boxWidth: 7, padding: 10, font: { size: 10 } }
+            },
+            tooltip: {
+              callbacks: {
+                title: overviewTooltipTitle,
+                label: context => context.datasetIndex === 0
+                  ? `${context.raw.toLocaleString('nl-NL')} vacatures per 100.000 inwoners`
+                  : `${context.raw.toLocaleString('nl-NL')}% nog actief binnen de meetperiode`
+              }
+            }
+          },
+          scales: {
+            xDemand: {
+              axis: 'x',
+              position: 'bottom',
+              beginAtZero: true,
+              max: 90,
+              grid: { color: COLORS.grid },
+              ticks: { color: COLORS.cobalt, stepSize: 30, font: { weight: 700, size: 9 } },
+              border: { display: false }
+            },
+            xActive: {
+              axis: 'x',
+              position: 'top',
+              beginAtZero: true,
+              max: 60,
+              grid: { drawOnChartArea: false },
+              ticks: {
+                color: COLORS.navy,
+                stepSize: 20,
+                callback: value => `${value}%`,
+                font: { weight: 700, size: 9 }
+              },
+              border: { display: false }
+            },
+            y: {
+              grid: { display: false },
+              ticks: { color: COLORS.navy, autoSkip: false, font: { weight: 700, size: 10 }, padding: 5 },
+              border: { display: false },
+              afterFit: scale => { scale.width = Math.min(118, Math.max(scale.width, 96)); }
+            }
+          }
+        } : {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: { top: 28, left: 6, right: 10, bottom: 8 } },
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: {
+              position: 'bottom',
+              align: 'center',
+              labels: { usePointStyle: true, boxWidth: 8, padding: 12, font: { weight: 400, size: 10 } }
+            },
+            tooltip: {
+              callbacks: {
+                title: overviewTooltipTitle,
+                label: context => context.dataset.type === 'line'
+                  ? `${context.dataset.label}: ${context.raw}%`
+                  : `${context.dataset.label}: ${context.raw.toLocaleString('nl-NL')} per 100.000`
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: { display: false },
+              ticks: { color: COLORS.muted, font: { weight: 700, size: 12 }, autoSkip: false, maxRotation: 0, minRotation: 0, padding: 8 },
+              border: { display: false }
+            },
+            y: {
+              position: 'left',
+              beginAtZero: true,
+              suggestedMax: 90,
+              title: { display: true, text: 'Vacatures per 100.000 inwoners', color: COLORS.muted, font: { weight: 700, size: 11 } },
+              grid: { color: COLORS.grid },
+              ticks: { color: COLORS.muted },
+              border: { display: false }
+            },
+            y1: {
+              position: 'right',
+              min: 0,
+              max: 60,
+              title: { display: true, text: '% nog actief binnen de meetperiode', color: COLORS.muted, font: { weight: 700, size: 11 } },
+              grid: { drawOnChartArea: false },
+              ticks: { color: COLORS.muted, callback: value => `${value}%` },
+              border: { display: false }
+            }
+          }
+        }
+      });
+    }
+
+    renderOverviewChart();
+
+    if (overviewMediaQuery.addEventListener) {
+      overviewMediaQuery.addEventListener('change', event => renderOverviewChart(event.matches));
+    } else {
+      overviewMediaQuery.addListener(event => renderOverviewChart(event.matches));
+    }
 
     function horizontalChart(id, labels, values) {
       const pairs = labels.map((label, i) => ({ label, value: values[i] }))
@@ -1282,12 +1810,37 @@
           .join('');
 
         div.innerHTML =
-          `<div class="map-pressure-card__title">Druk per woonplaats</div>` +
-          rows;
+          `<button class="map-pressure-card__title" type="button" aria-expanded="true">` +
+          `<span>Druk per woonplaats</span>` +
+          `<span class="map-pressure-card__chevron" aria-hidden="true"></span>` +
+          `</button>` +
+          `<div class="map-pressure-card__body">${rows}</div>`;
+
+        const toggle = div.querySelector('.map-pressure-card__title');
+        toggle.addEventListener('click', () => {
+          const isCollapsed = div.classList.toggle('is-collapsed');
+          toggle.setAttribute('aria-expanded', String(!isCollapsed));
+        });
 
         return div;
       };
       pressureCard.addTo(map);
+
+      const mobilePressureList = document.createElement('details');
+      mobilePressureList.className = 'mobile-pressure-list';
+      mobilePressureList.innerHTML =
+        `<summary>Top 5 druk per woonplaats</summary>` +
+        [...points]
+          .sort((a, b) => b.pressure - a.pressure)
+          .slice(0, 5)
+          .map(point =>
+            `<div class="mobile-pressure-list__row">` +
+            `<span>${point.name}</span>` +
+            `<strong>${point.pressure.toLocaleString('nl-NL')} per 100.000</strong>` +
+            `</div>`
+          )
+          .join('');
+      document.getElementById(id).insertAdjacentElement('afterend', mobilePressureList);
 
       points.forEach(point => {
         const radius = Math.max(6, Math.min(17, 5 + point.pressure / 45));
@@ -1342,11 +1895,67 @@
       reportMaps.forEach(map => map.invalidateSize());
     }
 
-    window.addEventListener('beforeprint', prepareVisualsForPrint);
-    window.addEventListener('afterprint', restoreVisualsAfterPrint);
+    window.addEventListener('beforeprint', () => {
+      renderOverviewChart(false);
+      prepareVisualsForPrint();
+    });
+
+    window.addEventListener('afterprint', () => {
+      restoreVisualsAfterPrint();
+      renderOverviewChart();
+    });
 
     const sections = [...document.querySelectorAll('section[id]')];
     const navLinks = [...document.querySelectorAll('.nav-link')];
+    const reportNav = document.querySelector('.report-nav');
+    const reportNavSlot = document.querySelector('.report-nav-slot');
+    const reportHeader = reportNav.closest('header');
+
+    let lastScrollY = window.scrollY;
+    let navFloatStart = 0;
+    let navScrollTicking = false;
+
+    function syncReportNavLayout() {
+      reportNavSlot.style.height = `${reportNav.offsetHeight}px`;
+      navFloatStart = reportHeader.offsetTop + reportHeader.offsetHeight;
+    }
+
+    function updateReportNav() {
+      const currentScrollY = Math.max(window.scrollY, 0);
+      const scrollDelta = currentScrollY - lastScrollY;
+
+      if (currentScrollY <= navFloatStart) {
+        reportNav.classList.remove('is-floating', 'is-visible');
+      } else {
+        reportNav.classList.add('is-floating');
+
+        if (scrollDelta < -5) {
+          reportNav.classList.add('is-visible');
+          lastScrollY = currentScrollY;
+        } else if (scrollDelta > 5) {
+          reportNav.classList.remove('is-visible');
+          lastScrollY = currentScrollY;
+        }
+      }
+
+      navScrollTicking = false;
+    }
+
+    syncReportNavLayout();
+    updateReportNav();
+
+    window.addEventListener('scroll', () => {
+      if (navScrollTicking) return;
+      navScrollTicking = true;
+      window.requestAnimationFrame(updateReportNav);
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      const wasFloating = reportNav.classList.contains('is-floating');
+      reportNav.classList.remove('is-floating', 'is-visible');
+      syncReportNavLayout();
+      if (wasFloating) updateReportNav();
+    });
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
