@@ -248,6 +248,169 @@
         font-size: 9px;
       }
     }
+
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    @media print {
+      html,
+      body {
+        width: 210mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 6% 5%, rgba(125, 178, 242, .18), transparent 25%),
+          radial-gradient(circle at 96% 9%, rgba(0, 115, 255, .10), transparent 27%),
+          #fff !important;
+        overflow: visible;
+      }
+
+      main {
+        width: 210mm;
+      }
+
+      header {
+        padding: 5mm 5mm 0 !important;
+        break-after: avoid-page;
+        page-break-after: avoid;
+      }
+
+      header nav {
+        display: none !important;
+      }
+
+      header section {
+        padding-top: 0 !important;
+        padding-bottom: 4mm !important;
+      }
+
+      header h1 {
+        font-size: 2rem !important;
+      }
+
+      #intro {
+        padding: 2mm 5mm 5mm !important;
+        break-before: avoid-page;
+        page-break-before: avoid;
+      }
+
+      .group-section,
+      #contact {
+        padding: 5mm !important;
+        break-before: page;
+        page-break-before: always;
+      }
+
+      main > section:not(#intro):not(.group-section):not(#contact) {
+        padding: 5mm !important;
+      }
+
+      header > div,
+      main > section > div {
+        max-width: 200mm !important;
+      }
+
+      #intro > div > div:first-child p {
+        font-size: .88rem !important;
+        line-height: 1.4 !important;
+      }
+
+      #intro h2 {
+        font-size: 1.35rem !important;
+      }
+
+      #intro .grid {
+        gap: 3mm !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+
+      #intro .glass-card {
+        padding: 4mm !important;
+        border-radius: 1.25rem !important;
+      }
+
+      #intro .glass-card h3 {
+        margin-top: 0 !important;
+        font-size: 1rem !important;
+        line-height: 1.25 !important;
+      }
+
+      #intro .glass-card p {
+        margin-top: 2mm !important;
+        font-size: .75rem !important;
+        line-height: 1.35 !important;
+      }
+
+      .group-section article > .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+
+      #contact article > .grid {
+        grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+      }
+
+      #contact article > .grid > :first-child {
+        grid-column: span 6 / span 6;
+      }
+
+      #contact article > .grid > :nth-child(2) {
+        grid-column: span 6 / span 6;
+      }
+
+      #contact article > .grid > :nth-child(2) > .grid {
+        grid-template-columns: minmax(0, 1fr) 170px !important;
+      }
+
+      #contact .profile-crop {
+        width: 170px;
+        height: 170px;
+      }
+
+      #contact .space-y-3 {
+        font-size: .75rem !important;
+      }
+
+      .chart-shell canvas {
+        max-width: 100% !important;
+      }
+
+      .chart-shell {
+        overflow: hidden;
+      }
+
+      .chart-shell.compact::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 2;
+        height: 34px;
+        background: #fff;
+        pointer-events: none;
+      }
+
+      article,
+      .glass-card,
+      .chart-shell,
+      .map-shell,
+      .grid > div,
+      footer {
+        break-inside: avoid-page;
+        page-break-inside: avoid;
+      }
+
+      .leaflet-control-zoom {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 
@@ -255,15 +418,6 @@
   <main>
     <header class="px-3 md:px-4 pt-5">
       <div class="max-w-[900px] mx-auto">
-        <div class="flex items-center justify-between gap-6 mb-5">
-          <img src="https://dutchwebshark.com/wp-content/uploads/2025/10/Dutchwebshark-logo-gekleurd.png"
-            alt="Dutchwebshark" class="h-9 md:h-11 w-auto" />
-          <a href="#contact"
-            class="hidden sm:inline-flex items-center gap-2 text-sm font-bold text-cobalt px-4 py-2 rounded-full bg-cobalt/5 hover:bg-cobalt/10 transition">
-            Contact
-          </a>
-        </div>
-
         <nav
           class="sticky top-3 z-[1000] bg-white/95 backdrop-blur border border-softwhite rounded-3xl shadow-card overflow-hidden">
           <div class="py-2.5">
@@ -295,22 +449,20 @@
       <div class="max-w-[900px] mx-auto">
         <div class="mb-5">
           <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl">
-            De zorgarbeidsmarkt staat structureel onder druk, maar de aard van die druk verschilt sterk per doelgroep.
-            Bij VIG & verzorgenden gaat het vooral om volume en snelheid, bij verpleegkundigen om structurele
-            concurrentie
-            tussen zorgdomeinen, bij kinderopvang om kwalificatie en instroom, en bij GGZ en artsen om een kleine,
-            specialistische talentpool. De juiste aanpak begint daarom niet bij één campagne, maar bij inzicht in
-            vacaturevolume, beschikbare professionals, regionale druk en de snelheid waarmee vacatures uit de markt
-            verdwijnen.
+            Je ziet het waarschijnlijk al terug in de cijfers: de instroom blijft achter bij de groei die je voor ogen
+            hebt, of de dienstverlening komt onder druk omdat vacatures langer openstaan dan wenselijk. De
+            zorgarbeidsmarkt is structureel krap, maar de oorzaak, en daarmee de oplossing, verschilt sterk per
+            doelgroep. Bij VIG & verzorgenden draait het vooral om volume en snelheid, bij verpleegkundigen om
+            concurrentie tussen zorgdomeinen, bij kinderopvang om kwalificatie en instroom, en bij GGZ-profielen en
+            artsen om een kleine, specialistische talentpool.
           </p>
           <p class="text-base md:text-lg leading-relaxed text-navy/72 max-w-6xl mt-4">
-            Lees verder naar de doelgroep die voor jouw organisatie het meest strategisch is. Per doelgroep zie je niet
-            alleen
-            hoeveel vraag er is, maar ook hoe die vraag zich verhoudt tot de beschikbare talentpool, welk aandeel
-            vacatures aan het einde van de 16-wekenmeetperiode
-            nog actief is en welke regionale omstandigheden de invulling beïnvloeden. Daarmee wordt zichtbaar waar extra
-            bereik helpt,
-            waar het proces moet versnellen en waar alleen een inhoudelijke, persoonlijke benadering nog verschil maakt.
+            Effectieve werving begint daarom niet bij meer campagnevolume, maar bij de juiste diagnose: ontbreekt het aan
+            bereik, overtuigingskracht, snelheid of een realistische talentpool? Kies hieronder het domein dat voor jouw
+            organisatie het meest strategisch is. Per doelgroep zie je hoe de vraag zich verhoudt tot de beschikbare
+            professionals, welk aandeel vacatures aan het einde van de 16-wekenmeetperiode nog actief is en waar de
+            regionale druk het hoogst oploopt. Zo wordt zichtbaar waar extra bereik rendeert, waar het proces sneller
+            moet en waar alleen een inhoudelijke, persoonlijke benadering nog beweging creëert.
           </p>
         </div>
 
@@ -696,19 +848,7 @@
         </article>
 
         <footer class="pt-7">
-          <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
-            <img src="https://dutchwebshark.com/wp-content/uploads/2025/10/Dutchwebshark-logo-gekleurd.png"
-              alt="Dutchwebshark" class="h-8 w-auto">
-            <div class="flex flex-wrap gap-x-7 gap-y-3 text-sm font-semibold">
-              <a href="https://dutchwebshark.com/" class="hover:text-cobalt">Website</a>
-              <a href="https://nl.linkedin.com/company/dutchwebshark1" class="hover:text-cobalt">Volg ons op
-                LinkedIn</a>
-              <a href="https://www.instagram.com/dutchwebshark/" class="hover:text-cobalt">Instagram</a>
-              <a href="https://dutchwebshark.com/contact/" class="hover:text-cobalt">Contact</a>
-            </div>
-          </div>
-
-          <p class="text-xs text-navy/35 leading-relaxed mt-5">
+          <p class="text-xs text-navy/35 leading-relaxed">
             Bronnen en periode: Jobfeed/Textkernel, laatste 16 weken, rapport aangemaakt 16-07-2026; CBS voorlopige
             inwonersaantallen per gemeente op 1-1-2026; LinkedIn Talent Insights voor eerdere talentpoolanalyses.
             Beroepsgroep- en plaatscijfers zijn gebaseerd op de aangeleverde 16-wekenmeting. “Nog actief” betekent
@@ -1039,9 +1179,41 @@
       });
 
       setTimeout(() => map.invalidateSize(), 250);
+      return map;
     }
 
-    Object.entries(targetMapData).forEach(([id, points]) => createMap(id, points));
+    const reportMaps = Object.entries(targetMapData).map(([id, points]) => createMap(id, points));
+
+    const chartLegendDisplay = new Map();
+
+    function prepareVisualsForPrint() {
+      Object.values(Chart.instances).forEach(chart => {
+        if (chart.canvas.id !== 'overviewChart') {
+          if (!chartLegendDisplay.has(chart.id)) {
+            chartLegendDisplay.set(chart.id, chart.options.plugins.legend.display);
+          }
+          chart.options.plugins.legend.display = false;
+        }
+        chart.resize();
+        chart.update('none');
+      });
+      reportMaps.forEach(map => map.invalidateSize());
+    }
+
+    function restoreVisualsAfterPrint() {
+      Object.values(Chart.instances).forEach(chart => {
+        if (chartLegendDisplay.has(chart.id)) {
+          chart.options.plugins.legend.display = chartLegendDisplay.get(chart.id);
+        }
+        chart.resize();
+        chart.update('none');
+      });
+      chartLegendDisplay.clear();
+      reportMaps.forEach(map => map.invalidateSize());
+    }
+
+    window.addEventListener('beforeprint', prepareVisualsForPrint);
+    window.addEventListener('afterprint', restoreVisualsAfterPrint);
 
     const sections = [...document.querySelectorAll('section[id]')];
     const navLinks = [...document.querySelectorAll('.nav-link')];
