@@ -1967,6 +1967,45 @@
     }, { rootMargin: '-35% 0px -55% 0px', threshold: .01 });
 
     sections.forEach(section => observer.observe(section));
+
+    // Informeer de WordPress-pagina over de volledige rapporthoogte wanneer dit
+    // document in een iframe staat. Zo blijft de iframe ook op mobiel even hoog
+    // als de inhoud, zonder vaste hoogte of visuele schaaltruc.
+    const iframeParentOrigin = 'https://dutchwebshark.com';
+    let lastReportedIframeHeight = 0;
+    let iframeHeightUpdateScheduled = false;
+
+    function reportIframeHeight() {
+      iframeHeightUpdateScheduled = false;
+      if (window.parent === window) return;
+
+      const height = Math.ceil(Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight
+      ));
+
+      if (height === lastReportedIframeHeight) return;
+      lastReportedIframeHeight = height;
+      window.parent.postMessage({ type: 'iframe-height', height }, iframeParentOrigin);
+    }
+
+    function scheduleIframeHeightUpdate() {
+      if (iframeHeightUpdateScheduled) return;
+      iframeHeightUpdateScheduled = true;
+      window.requestAnimationFrame(reportIframeHeight);
+    }
+
+    window.addEventListener('load', scheduleIframeHeightUpdate);
+    window.addEventListener('resize', scheduleIframeHeightUpdate);
+
+    if ('ResizeObserver' in window) {
+      const iframeHeightObserver = new ResizeObserver(scheduleIframeHeightUpdate);
+      iframeHeightObserver.observe(document.body);
+    }
+
+    scheduleIframeHeightUpdate();
   </script>
 </body>
 </html>
