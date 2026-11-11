@@ -4,12 +4,12 @@ Deze repository bevat interactieve rapportages van [Dutchwebshark](https://dutch
 
 ## Beschikbare rapportagepagina's
 
-| Rapportage | URL-pad vanaf de publicatiebasis | Bronbestand op GitHub |
+| Rapportage | URL-pad vanaf de publicatiebasis | Rapport openen |
 | --- | --- | --- |
-| Wervingsanalyse Zorgmarkt Nederland | `zorg-analyse.html` | [`www/zorg-analyse.html`](./www/zorg-analyse.html) |
-| Werving & Selectie Benchmark 2026 | `werving-benchmark-2026.html` | [`www/werving-benchmark-2026.html`](./www/werving-benchmark-2026.html) |
+| Wervingsanalyse Zorgmarkt Nederland | `zorg-analyse.html` | [Open rapport](https://reports.dutchwebshark.com/zorg-analyse.html) |
+| Werving & Selectie Benchmark 2026 | `werving-benchmark-2026.html` | [Open rapport](https://reports.dutchwebshark.com/werving-benchmark-2026.html) |
 
-De paden hierboven zijn **relatief aan de basis-URL van de omgeving**: ze verwijzen dus niet automatisch naar `localhost`. De links in de laatste kolom openen de bronbestanden binnen deze GitHub-repository. Een HTML-pagina is pas als website te openen wanneer de hosting het bestand uit `www/` publiceert.
+De paden hierboven zijn **relatief aan de basis-URL van de omgeving**: ze verwijzen dus niet automatisch naar `localhost`. De links in de laatste kolom verwijzen naar de beoogde publieke rapport-URL's onder `reports.dutchwebshark.com`. De bereikbaarheid hangt af van de hostingconfiguratie en is hiermee niet bevestigd.
 
 ## Lokaal starten
 
