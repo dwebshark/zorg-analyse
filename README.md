@@ -4,10 +4,12 @@ Deze repository bevat interactieve rapportages van [Dutchwebshark](https://dutch
 
 ## Beschikbare rapportagepagina's
 
-| Rapportage | Lokale route | Publieke versie | Bestand |
-| --- | --- | --- | --- |
-| Wervingsanalyse Zorgmarkt Nederland | [`/zorg-analyse.html`](http://localhost:8000/zorg-analyse.html) | [Zorgrapportage](https://dutchwebshark.com/zorg-analyse/) | `www/zorg-analyse.html` |
-| Werving & Selectie Benchmark 2026 | [`/werving-benchmark-2026.html`](http://localhost:8000/werving-benchmark-2026.html) | Nog niet gepubliceerd (featurebranch) | `www/werving-benchmark-2026.html` |
+| Rapportage | URL-pad vanaf de publicatiebasis | Bronbestand op GitHub |
+| --- | --- | --- |
+| Wervingsanalyse Zorgmarkt Nederland | `zorg-analyse.html` | [`www/zorg-analyse.html`](./www/zorg-analyse.html) |
+| Werving & Selectie Benchmark 2026 | `werving-benchmark-2026.html` | [`www/werving-benchmark-2026.html`](./www/werving-benchmark-2026.html) |
+
+De paden hierboven zijn **relatief aan de basis-URL van de omgeving**: ze verwijzen dus niet automatisch naar `localhost`. De links in de laatste kolom openen de bronbestanden binnen deze GitHub-repository. Een HTML-pagina is pas als website te openen wanneer de hosting het bestand uit `www/` publiceert.
 
 ## Lokaal starten
 
@@ -17,7 +19,7 @@ Er is geen buildstap nodig. Start vanuit de hoofdmap van de repository een stati
 python3 -m http.server 8000 -d www
 ```
 
-Open daarna [Zorg Analyse](http://localhost:8000/zorg-analyse.html) of [Werving & Selectie Benchmark 2026](http://localhost:8000/werving-benchmark-2026.html). Voor de externe CSS-, lettertype-, grafiek- en kaartbronnen is een internetverbinding nodig.
+Open voor een **lokale test** `http://localhost:8000/zorg-analyse.html` of `http://localhost:8000/werving-benchmark-2026.html`. Dit zijn uitsluitend voorbeelden voor de lokale server; de GitHub-links en de gepubliceerde routes zijn hier niet aan gekoppeld. Voor externe CSS-, lettertype-, grafiek- en kaartbronnen is een internetverbinding nodig.
 
 ## Opslaan als PDF
 
@@ -29,6 +31,6 @@ Open daarna [Zorg Analyse](http://localhost:8000/zorg-analyse.html) of [Werving 
 
 ## Hosting en insluiten
 
-De repository bevat `CNAME` met `reports.dutchwebshark.com`. Controleer de actieve hosting-/publicatie-instellingen voordat je een nieuw bestand op dat subdomein verwacht. Na deployment vanuit de juiste publicatiemap is de beoogde URL voor de benchmark `https://reports.dutchwebshark.com/werving-benchmark-2026.html`.
+De repository bevat `CNAME` met `reports.dutchwebshark.com`. De uiteindelijke URL wordt gevormd door de **werkelijke publicatiebasis** plus het relatieve pad uit de tabel; bijvoorbeeld `<basis-URL>/werving-benchmark-2026.html`. Bij een publicatiebasis `https://reports.dutchwebshark.com/` is dat `https://reports.dutchwebshark.com/werving-benchmark-2026.html`. Controleer eerst of de hosting daadwerkelijk de inhoud van `www/` serveert; een GitHub-commit en het `CNAME`-bestand bewijzen op zichzelf niet dat de pagina live staat. Bij een iframe op een ander domein (bijvoorbeeld WordPress) moet de `src` wel verwijzen naar de echte gepubliceerde URL, niet naar een relatief pad op het WordPress-domein.
 
 De benchmark is één zelfstandige HTML-pagina met 12 slides en kan na publicatie via een iframe op de website worden ingesloten. De huidige HTML bevat nog geen automatische iframe-hoogtekoppeling; geef het iframe voorlopig een passende vaste hoogte of voeg later een gecontroleerde `postMessage`-resizekoppeling toe. De bestaande Zorg Analyse-pagina heeft al een resizebericht voor de WordPress-integratie.
