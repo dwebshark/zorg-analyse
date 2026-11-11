@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Werving & Selectie Benchmark 2026 | Dutchwebshark</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dwsBlue: '#0066FF',
+            dwsNavy: '#072042',
+            dwsLightBlue: '#EEF5FF',
+            dwsMutedBlue: '#6FA4FF',
+            dwsBorder: '#0066FF',
+            dwsTextDark: '#0B192C'
+          },
+          fontFamily: {
+            sans: ['Segoe UI', 'Verdana', 'Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Verdana, sans-serif;
+      background-color: #0F172A;
+      color: #0B192C;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 16:9 Slide Formaat op het scherm */
+    .slide-viewport {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .slide {
+      width: 100%;
+      max-width: 1120px;
+      aspect-ratio: 16 / 9;
+      background-color: #FFFFFF;
+      border-radius: 20px;
+      position: relative;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 44px 56px;
+      box-shadow: 0 20px 40px -15px rgba(0,0,0,0.4);
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    /* Template Huisstijl Componenten */
+    .dws-card {
+      border: 2px solid #0066FF;
+      border-radius: 22px;
+      background-color: #FFFFFF;
+    }
+
+    .pill-header {
+      background-color: #0066FF;
+      color: #FFFFFF;
+      border-radius: 9999px;
+      padding: 5px 20px;
+      font-weight: 700;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    .pill-navy {
+      background-color: #072042;
+      color: #FFFFFF;
+      border-radius: 9999px;
+      padding: 5px 18px;
+      font-weight: 700;
+      font-size: 12px;
+      display: inline-block;
+    }
+
+    /* Sectie / Titelslide Styling conform template screenshot */
+    .slide-divider {
+      background-color: #EDEDED;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Print & PDF Export Styling: Strakke A4/16:9 Landscape pagina per slide */
+    @media print {
+      @page {
+        size: 297mm 167mm; /* 16:9 Landscape */
+        margin: 0;
+      }
+      body {
+        background-color: #FFFFFF !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .slide-viewport {
+        padding: 0 !important;
+        display: block !important;
+      }
+      .slide {
+        display: flex !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: none !important;
+        aspect-ratio: auto !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        page-break-after: always !important;
+        break-after: page !important;
+        padding: 40px 50px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- VIEWPORT WRAPPER -->
+  <div class="slide-viewport">
+
+    <!-- TOP CONTROLS (Schermbediening) -->
+    <div class="no-print w-full max-w-[1120px] flex justify-between items-center mb-4 text-white text-xs px-2">
+      <div class="flex items-center gap-2 font-bold tracking-wider text-dwsMutedBlue">
+        <span class="w-2.5 h-2.5 rounded-full bg-dwsBlue"></span>
+        Dutchwebshark intelligence · Benchmark presentatie
+      </div>
+      <div class="flex items-center gap-3">
+        <span class="text-slate-400 font-mono text-xs">Pijltoetsen ← / → werken ook</span>
+        <button onclick="window.print()" class="bg-dwsBlue hover:bg-blue-600 text-white font-bold px-4 py-1.5 rounded-full flex items-center gap-2 shadow-sm transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          Exporteer / print als PDF
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 1: COVER SLIDE -->
+    <!-- ========================================== -->
+    <div class="slide active" id="slide-1">
+      <div class="flex justify-between items-start">
+        <div class="flex items-center gap-2 text-dwsBlue font-black text-lg tracking-tight">
+          Dutchwebshark
+        </div>
+        <div class="text-xs font-semibold text-slate-400 tracking-wide">
+          Onderzoeksrapport
+        </div>
+      </div>
+
+      <div class="my-auto max-w-3xl">
+        <div class="inline-block bg-dwsLightBlue text-dwsBlue px-4 py-1.5 rounded-full text-xs font-bold tracking-wide mb-4 border border-blue-200">
+          Doelgroeponderzoek & benchmark
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-black text-dwsNavy tracking-tight leading-tight mb-4">
+          Werven en behouden<br><span class="text-dwsBlue">van personeel in de praktijk</span>
+        </h1>
+        <p class="text-base text-slate-600 font-medium max-w-2xl leading-relaxed">
+          De belangrijkste wervingsknelpunten, operationele impact en ervaringen met wervingspartners gebundeld onder 21 directie- en HR-beslissers.
+        </p>
+      </div>
+
+      <div class="flex justify-between items-end border-t border-slate-100 pt-4 text-xs text-slate-400">
+        <div>
+          <span class="font-bold text-dwsNavy">Doelgroep:</span> MKB+ & corporate (techniek, bouw, zorg & logistiek)
+        </div>
+        <div class="font-semibold text-slate-500">
+          2026 | Dutchwebshark B.V.
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 2: VERANTWOORDING & CONTEXT -->
+    <!-- ========================================== -->
+    <div class="slide" id="slide-2">
+      <div class="flex justify-between items-center mb-2">
+        <div class="text-xs font-bold text-dwsBlue tracking-wide">Over dit rapport</div>
+        <div class="text-xs font-bold text-slate-400">DWS Intelligence</div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-auto">
+        <!-- Blok 1: DWS Helpt -->
+        <div class="dws-card p-6 flex flex-col justify-between">
+          <div>
+            <span class="pill-header mb-3">Doel van dit rapport</span>
+            <p class="text-xs text-slate-600 leading-relaxed mt-3">
+              Dit rapport is samengesteld voor de organisaties die hebben deelgenomen aan ons onderzoek. Het biedt een transparante terugkoppeling en objectieve benchmark over hoe branchegenoten werving vandaag de dag ervaren en aanpakken.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-dwsBlue font-bold">
+            Transparant & geanonimiseerd
+          </div>
+        </div>
+
+        <!-- Blok 2: Verantwoording -->
+        <div class="dws-card p-6 flex flex-col justify-between">
+          <div>
+            <span class="pill-navy mb-3">Verantwoording</span>
+            <p class="text-xs text-slate-600 leading-relaxed mt-3">
+              De uitkomsten zijn gebaseerd op een survey onder 21 geverifieerde beslissers (directie, HR-directeuren en corporate recruiters). Deelnemers zijn werkzaam bij bedrijven variërend van 10 tot 250+ medewerkers in Nederland.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-dwsNavy font-bold">
+            Veldwerk: najaar 2026
+          </div>
+        </div>
+
+        <!-- Blok 3: Vragen -->
+        <div class="dws-card p-6 flex flex-col justify-between bg-dwsLightBlue border-blue-200">
+          <div>
+            <span class="pill-header mb-3 bg-dwsNavy">Contact & vragen</span>
+            <p class="text-xs text-slate-700 leading-relaxed mt-3">
+              Vragen over de data of behoefte aan een verdiepende benchmark voor jouw specifieke sector of regio? Neem gerust contact op met ons datateam.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-blue-200 text-xs text-dwsNavy font-semibold">
+            info@dutchwebshark.com<br>
+            +31 20 820 11 43
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-3">
+        <span>02. Verantwoording & doel</span>
+        <span>Dutchwebshark</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 3: TUSSENSLIDE 01 (Lichtgrijze stijl met Golf) -->
+    <!-- ========================================== -->
+    <div class="slide slide-divider" id="slide-3">
+      <!-- SVG Golflijn conform template -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 562.5" preserveAspectRatio="none" fill="none">
+        <path d="M 570 -30 C 630 80, 650 170, 635 260 C 615 340, 580 380, 590 440 C 605 490, 670 520, 750 500 C 820 480, 865 500, 890 590" stroke="#0066FF" stroke-width="26" stroke-linecap="round"/>
+      </svg>
+
+      <div class="flex justify-between items-start relative z-10">
+        <div class="text-dwsBlue font-black text-sm tracking-tight">Dutchwebshark</div>
+      </div>
+
+      <div class="mt-auto relative z-10 max-w-xl pb-4">
+        <div class="text-6xl sm:text-7xl font-extrabold text-dwsBlue mb-2 leading-none">01.</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-dwsNavy tracking-tight leading-tight">
+          Deelnemersveld & bedrijfsprofielen
+        </h2>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 4: PROFIEL PARTICIPANTEN -->
+    <!-- ========================================== -->
+    <div class="slide" id="slide-4">
+      <div class="flex justify-between items-center mb-2">
+        <div class="text-xs font-bold text-dwsNavy">
+          <span class="text-dwsBlue font-black">01.</span> Deelnemersveld & segmentatie
+        </div>
+        <span class="pill-navy">N = 21 organisaties</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-auto">
+        <!-- Kaart 1: Bedrijfsgrootte -->
+        <div class="dws-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4">
+              <span class="pill-header">Verdeling bedrijfsgrootte</span>
+            </div>
+            
+            <div class="space-y-3.5">
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
+                  <span>51 - 250 medewerkers</span>
+                  <span class="text-dwsBlue font-black">10 bedrijven (50%)</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-6 overflow-hidden p-0.5">
+                  <div class="bg-dwsBlue h-full rounded-full flex items-center justify-end pr-3 text-white text-[11px] font-bold" style="width: 50%;">10</div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
+                  <span>Meer dan 250 medewerkers</span>
+                  <span class="text-dwsNavy font-black">7 bedrijven (35%)</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-6 overflow-hidden p-0.5">
+                  <div class="bg-dwsNavy h-full rounded-full flex items-center justify-end pr-3 text-white text-[11px] font-bold" style="width: 35%;">7</div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
+                  <span>11 - 50 medewerkers</span>
+                  <span class="text-slate-600 font-bold">2 bedrijven (10%)</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-6 overflow-hidden p-0.5">
+                  <div class="bg-dwsMutedBlue h-full rounded-full flex items-center justify-end pr-3 text-white text-[11px] font-bold" style="width: 20%;">2</div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-bold mb-1 text-slate-700">
+                  <span>1 - 10 medewerkers</span>
+                  <span class="text-slate-500 font-semibold">1 bedrijf (5%)</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-6 overflow-hidden p-0.5">
+                  <div class="bg-slate-400 h-full rounded-full flex items-center justify-end pr-3 text-white text-[11px] font-bold" style="width: 12%;">1</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 border-t border-slate-100 text-[11px] text-slate-500 italic">
+            95% van de deelnemers is direct beslisser of medeverantwoordelijk voor personeel.
+          </div>
+        </div>
+
+        <!-- Kaart 2: Sectoren -->
+        <div class="dws-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="mb-4">
+              <span class="pill-header">Vertegenwoordigde sectoren</span>
+            </div>
+
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between items-center p-2 rounded-xl bg-dwsLightBlue border border-blue-100 font-semibold text-dwsNavy">
+                <span>Industrie, bouw & installatie</span>
+                <span class="bg-dwsBlue text-white font-bold px-2 py-0.5 rounded-full text-xs">7 (35%)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-slate-700">
+                <span>Zorg & welzijn</span>
+                <span class="bg-dwsNavy text-white font-bold px-2 py-0.5 rounded-full text-xs">5 (25%)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-xl bg-dwsLightBlue border border-blue-100 font-semibold text-dwsNavy">
+                <span>Techniek & maakindustrie</span>
+                <span class="bg-dwsBlue text-white font-bold px-2 py-0.5 rounded-full text-xs">4 (20%)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-slate-700">
+                <span>Logistiek & transport</span>
+                <span class="bg-slate-500 text-white font-bold px-2 py-0.5 rounded-full text-xs">2 (10%)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-xl bg-slate-50 border border-slate-200 font-semibold text-slate-700">
+                <span>Schoonmaak & facilitair</span>
+                <span class="bg-slate-500 text-white font-bold px-2 py-0.5 rounded-full text-xs">2 (10%)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-2 border-t border-slate-100 text-[11px] text-slate-500 italic">
+            Focus ligt sterk op organisaties met structurele, vakkritische personeelsbehoefte.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-3">
+        <span>01. Deelnemersveld & segmentatie</span>
+        <span>Dutchwebshark</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 5: TUSSENSLIDE 02 (Lichtgrijze stijl met Golf) -->
+    <!-- ========================================== -->
+    <div class="slide slide-divider" id="slide-5">
+      <!-- SVG Golflijn conform template -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 562.5" preserveAspectRatio="none" fill="none">
+        <path d="M 570 -30 C 630 80, 650 170, 635 260 C 615 340, 580 380, 590 440 C 605 490, 670 520, 750 500 C 820 480, 865 500, 890 590" stroke="#0066FF" stroke-width="26" stroke-linecap="round"/>
+      </svg>
+
+      <div class="flex justify-between items-start relative z-10">
+        <div class="text-dwsBlue font-black text-sm tracking-tight">Dutchwebshark</div>
+      </div>
+
+      <div class="mt-auto relative z-10 max-w-xl pb-4">
+        <div class="text-6xl sm:text-7xl font-extrabold text-dwsBlue mb-2 leading-none">02.</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-dwsNavy tracking-tight leading-tight">
+          Gevolgen & operationele druk
+        </h2>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 6: GEVOLGEN ANALYSE -->
+    <!-- ========================================== -->
+    <div class="slide" id="slide-6">
+      <div class="flex justify-between items-center mb-1">
+        <div class="text-xs font-bold text-dwsNavy">
+          <span class="text-dwsBlue font-black">02.</span> Wat organisaties concreet merken
+        </div>
+        <span class="pill-header">Impactanalyse</span>
+      </div>
+
+      <div class="my-auto space-y-3">
+        <!-- Bar 1 -->
+        <div>
+          <div class="flex justify-between text-xs font-bold mb-1 text-dwsNavy">
+            <span>Teams raken onderbezet of de werkdruk loopt op</span>
+            <span class="text-dwsBlue font-black">65% (13 van de 20)</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-7 overflow-hidden p-0.5">
+            <div class="bg-dwsBlue h-full rounded-full flex items-center justify-end pr-4 text-white text-xs font-extrabold" style="width: 65%;">
+              65%
+            </div>
+          </div>
+        </div>
+
+        <!-- Bar 2 -->
+        <div>
+          <div class="flex justify-between text-xs font-bold mb-1 text-dwsNavy">
+            <span>Vacatures blijven substantieel langer open dan gewenst</span>
+            <span class="text-dwsBlue font-black">55% (11 van de 20)</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-7 overflow-hidden p-0.5">
+            <div class="bg-dwsBlue h-full rounded-full flex items-center justify-end pr-4 text-white text-xs font-extrabold" style="width: 55%;">
+              55%
+            </div>
+          </div>
+        </div>
+
+        <!-- Bar 3 -->
+        <div>
+          <div class="flex justify-between text-xs font-bold mb-1 text-dwsNavy">
+            <span>We kunnen minder werk aannemen of onze groei wordt geremd</span>
+            <span class="text-dwsNavy font-black">30% (6 van de 20)</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-7 overflow-hidden p-0.5">
+            <div class="bg-dwsNavy h-full rounded-full flex items-center justify-end pr-4 text-white text-xs font-extrabold" style="width: 30%;">
+              30%
+            </div>
+          </div>
+        </div>
+
+        <!-- Bar 4 -->
+        <div>
+          <div class="flex justify-between text-xs font-bold mb-1 text-dwsNavy">
+            <span>Interne teams zijn veel tijd kwijt aan werving</span>
+            <span class="text-dwsNavy font-black">20% (4 van de 20)</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-7 overflow-hidden p-0.5">
+            <div class="bg-dwsNavy h-full rounded-full flex items-center justify-end pr-4 text-white text-xs font-extrabold" style="width: 20%;">
+              20%
+            </div>
+          </div>
+        </div>
+
+        <!-- Bar 5 -->
+        <div>
+          <div class="flex justify-between text-xs font-bold mb-1 text-dwsNavy">
+            <span>Extra kosten, gemiste omzet of verhoogde inhuur van externen</span>
+            <span class="text-slate-600 font-bold">20% (4 van de 20)</span>
+          </div>
+          <div class="w-full bg-slate-100 rounded-full h-7 overflow-hidden p-0.5">
+            <div class="bg-slate-400 h-full rounded-full flex items-center justify-end pr-4 text-white text-xs font-extrabold" style="width: 20%;">
+              20%
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-3 bg-dwsLightBlue rounded-xl border border-blue-100 text-xs text-dwsNavy flex items-center gap-3">
+        <span class="font-bold text-dwsBlue text-sm">Belangrijk inzicht:</span>
+        Werving is geen puur HR-vraagstuk meer. Bij 65% raakt het direct de continuïteit van de zittende teams en bij 30% remt het rechtstreeks de omzetgroei.
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-2">
+        <span>02. Gevolgen & operationele druk</span>
+        <span>Dutchwebshark</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 7: REEDS ONDERNOMEN VS OPEN UITDAGINGEN -->
+    <!-- ========================================== -->
+    <div class="slide" id="slide-7">
+      <div class="flex justify-between items-center mb-2">
+        <div class="text-xs font-bold text-dwsNavy">
+          <span class="text-dwsBlue font-black">02.</span> Acties & knelpunten in de praktijk
+        </div>
+        <span class="pill-navy">Praktijktoets</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 my-auto">
+        <!-- Links: Reeds ondernomen (6 cols) -->
+        <div class="md:col-span-6 dws-card p-5 flex flex-col justify-between">
+          <div>
+            <span class="pill-header mb-3">Reeds geprobeerd</span>
+            <div class="space-y-2 mt-3 text-xs">
+              <div class="flex justify-between p-2 rounded-lg bg-slate-50 border border-slate-200 font-semibold">
+                <span>Vacaturetekst of propositie herschreven</span>
+                <span class="text-dwsBlue font-bold">65% (13x)</span>
+              </div>
+              <div class="flex justify-between p-2 rounded-lg bg-slate-50 border border-slate-200 font-semibold">
+                <span>Zelf actief kandidaten benaderd</span>
+                <span class="text-dwsBlue font-bold">45% (9x)</span>
+              </div>
+              <div class="flex justify-between p-2 rounded-lg bg-slate-50 border border-slate-200 font-semibold">
+                <span>Wervingsbureau ingeschakeld</span>
+                <span class="text-dwsNavy font-bold">40% (8x)</span>
+              </div>
+              <div class="flex justify-between p-2 rounded-lg bg-slate-50 border border-slate-200 font-semibold">
+                <span>Extra vacaturebanken ingezet</span>
+                <span class="text-dwsNavy font-bold">35% (7x)</span>
+              </div>
+              <div class="flex justify-between p-2 rounded-lg bg-slate-50 border border-slate-200 font-semibold">
+                <span>Campagnes en social marketing</span>
+                <span class="text-slate-600 font-bold">30% (6x)</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-[11px] text-slate-400 mt-2">
+            Meeste bedrijven hebben al 2 tot 4 verschillende routes bewandeld.
+          </div>
+        </div>
+
+        <!-- Rechts: Echte uitdagingen (6 cols) -->
+        <div class="md:col-span-6 dws-card p-5 flex flex-col justify-between bg-slate-50">
+          <div>
+            <span class="pill-navy mb-3">Letterlijke wervingsuitdagingen</span>
+            <div class="space-y-2 mt-3 text-xs">
+              <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                <p class="italic text-slate-700">"Momenteel alle keyfuncties ingevuld. Wij zoeken specifiek nog vaktimmermannen."</p>
+                <span class="block text-[10px] text-slate-400 font-bold mt-1">— Bouwbedrijf (>250 medewerkers)</span>
+              </div>
+              <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                <p class="italic text-slate-700">"Cost engineering: diepgaande kennis van maakbaarheid, prijzen en assemblage."</p>
+                <span class="block text-[10px] text-slate-400 font-bold mt-1">— Maakindustrie (51-250 medewerkers)</span>
+              </div>
+              <div class="p-2.5 bg-white rounded-xl border border-slate-200">
+                <p class="italic text-slate-700">"Specialistische functies in dunbevolkt gebied aan de grens (artsen/behandelaren)."</p>
+                <span class="block text-[10px] text-slate-400 font-bold mt-1">— Zorginstelling (>250 medewerkers)</span>
+              </div>
+            </div>
+          </div>
+          <div class="text-[11px] text-dwsBlue font-bold mt-2">
+            Pijn = specifieke vakkennis, niet algemeen volume.
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-3">
+        <span>02. Acties & knelpunten in de praktijk</span>
+        <span>Dutchwebshark</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 8: TUSSENSLIDE 03 (Lichtgrijze stijl met Golf) -->
+    <!-- ========================================== -->
+    <div class="slide slide-divider" id="slide-8">
+      <!-- Tweede SVG Golf variant conform template -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 562.5" preserveAspectRatio="none" fill="none">
+        <path d="M 860 -30 C 780 180, 770 300, 750 400 C 730 470, 680 500, 520 590" stroke="#0066FF" stroke-width="26" stroke-linecap="round"/>
+      </svg>
+
+      <div class="flex justify-between items-start relative z-10">
+        <div class="text-dwsBlue font-black text-sm tracking-tight">Dutchwebshark</div>
+      </div>
+
+      <div class="mt-auto relative z-10 max-w-xl pb-4">
+        <div class="text-6xl sm:text-7xl font-extrabold text-dwsBlue mb-2 leading-none">03.</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-dwsNavy tracking-tight leading-tight">
+          De recruitment paradox
+        </h2>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 9: PARADOX & BUREAU ERVARINGEN -->
+    <!-- ========================================== -->
+    <div class="slide" id="slide-9">
+      <div class="flex justify-between items-center mb-1">
+        <div class="text-xs font-bold text-dwsNavy">
+          <span class="text-dwsBlue font-black">03.</span> Kwantiteit versus kwaliteit
+        </div>
+        <span class="pill-header">De kernparadox</span>
+      </div>
+
+      <div class="my-auto space-y-4">
+        <!-- De Kernstelling -->
+        <div class="p-4 rounded-2xl bg-dwsLightBlue border-2 border-dwsBlue text-center">
+          <div class="text-xs font-bold text-dwsBlue mb-1">Grootste herkenningspunt uit het onderzoek</div>
+          <h3 class="text-2xl font-black text-dwsNavy">
+            “Ik krijg wel reacties, maar niet de juiste mensen.”
+          </h3>
+          <p class="text-xs text-slate-600 max-w-2xl mx-auto mt-1">
+            Vacaturebanken en standaard advertenties genereren reacties van niet-gekwalificeerde kandidaten. De gezochte professional met ervaring is latent en reageert zelden uit zichzelf.
+          </p>
+        </div>
+
+        <!-- 2 Kolommen: Bureaus vs Gewenst -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <h4 class="font-bold text-dwsNavy mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-red-500"></span> Ervaringen met wervingsbureaus
+            </h4>
+            <ul class="space-y-1.5 text-slate-600">
+              <li>• <strong>Hoge kosten:</strong> fees van €8.000 tot €12.000 per hire.</li>
+              <li>• <strong>Volume boven match:</strong> veel cv's doorgestuurd zonder diepe voorselectie.</li>
+              <li>• <strong>Geen eigenaarschap:</strong> de database blijft eigendom van het bureau.</li>
+            </ul>
+          </div>
+
+          <div class="p-4 rounded-xl border border-dwsBlue bg-white">
+            <h4 class="font-bold text-dwsBlue mb-2 flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-dwsBlue"></span> Wat beslissers wél zoeken
+            </h4>
+            <p class="italic text-slate-700 leading-relaxed mb-2">
+              “Een partij met een aantoonbaar track record in de sector, die de cultuur snapt en oprecht geïnteresseerd is in mensen vs. snelle plaatsingsbonussen.”
+            </p>
+            <span class="text-[10px] text-slate-400 font-semibold block">— HR-verantwoordelijke industrie & bouw</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-2">
+        <span>03. De recruitment paradox</span>
+        <span>Dutchwebshark</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 10: TUSSENSLIDE 04 (Lichtgrijze stijl met Golf) -->
+    <!-- ========================================== -->
+    <div class="slide slide-divider" id="slide-10">
+      <!-- SVG Golflijn conform template -->
+      <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 1000 562.5" preserveAspectRatio="none" fill="none">
+        <path d="M 570 -30 C 630 80, 650 170, 635 260 C 615 340, 580 380, 590 440 C 605 490, 670 520, 750 500 C 820 480, 865 500, 890 590" stroke="#0066FF" stroke-width="26" stroke-linecap="round"/>
+      </svg>
+
+      <div class="flex justify-between items-start relative z-10">
+        <div class="text-dwsBlue font-black text-sm tracking-tight">Dutchwebshark</div>
+      </div>
+
+      <div class="mt-auto relative z-10 max-w-xl pb-4">
+        <div class="text-6xl sm:text-7xl font-extrabold text-dwsBlue mb-2 leading-none">04.</div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-dwsNavy tracking-tight leading-tight">
+          Conclusies & benchmark takeaways
+        </h2>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 11: CONCLUSIES & LEARNINGS -->
+    <!-- ========================================== -->
+    <div class="slide" id="slide-11">
+      <div class="flex justify-between items-center mb-2">
+        <div class="text-xs font-bold text-dwsNavy">
+          <span class="text-dwsBlue font-black">04.</span> Conclusies & benchmark
+        </div>
+        <span class="pill-header">Takeaways</span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-auto">
+        <!-- Learning 1 -->
+        <div class="dws-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-dwsBlue text-white font-black flex items-center justify-center text-xs mb-3">1</div>
+            <h4 class="font-bold text-sm text-dwsNavy mb-2">Kwalificatie vóór kwantiteit</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Het probleem is niet een tekort aan reacties, maar een tekort aan de <em>juiste</em> reacties. Een laagdrempelige maar directe kwalificatie (bv. via geautomatiseerde WhatsApp-vragen) filtert direct op vakdiploma's, ervaring en motivatie.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-dwsBlue">
+            Bespaart 60% interne HR-tijd
+          </div>
+        </div>
+
+        <!-- Learning 2 -->
+        <div class="dws-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-dwsNavy text-white font-black flex items-center justify-center text-xs mb-3">2</div>
+            <h4 class="font-bold text-sm text-dwsNavy mb-2">Latente professionals bereiken</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Goede vakmensen zitten al op een vaste plek en zoeken niet actief. Zij worden niet bereikt met traditionele jobboards, maar wél via gerichte jobmarketing op social media en actieve 1-op-1 talent sourcing namens de directie.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-dwsNavy">
+            Bereik 80% van de markt
+          </div>
+        </div>
+
+        <!-- Learning 3 -->
+        <div class="dws-card p-6 flex flex-col justify-between">
+          <div>
+            <div class="w-8 h-8 rounded-full bg-dwsBlue text-white font-black flex items-center justify-center text-xs mb-3">3</div>
+            <h4 class="font-bold text-sm text-dwsNavy mb-2">Eigenaarschap & talentpools</h4>
+            <p class="text-xs text-slate-600 leading-relaxed">
+              Stop met het betalen van herhaalde bureaufees voor losse vacatures. Bouw een centrale talentpool op rondom jouw kritische functieprofielen, waarbij de data en kandidaten van jouw organisatie blijven.
+            </p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] font-bold text-dwsBlue">
+            Lagere kosten per hire op lange termijn
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-3">
+        <span>04. Conclusies & benchmark</span>
+        <span>Dutchwebshark</span>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SLIDE 12: CONTACT & SLUITSTUK -->
+    <!-- ========================================== -->
+    <div class="slide" id="slide-12">
+      <div class="flex justify-between items-start">
+        <div class="text-dwsBlue font-black text-xl tracking-tight">Dutchwebshark</div>
+        <div class="text-xs text-slate-400 font-semibold">intelligence@dutchwebshark.com</div>
+      </div>
+
+      <div class="my-auto max-w-2xl">
+        <h2 class="text-4xl font-black text-dwsNavy tracking-tight mb-4">
+          Dank voor jouw deelname.
+        </h2>
+        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+          Hopelijk bieden deze inzichten herkenning en houvast voor jouw eigen wervingsaanpak. Wil je sparren over de specifieke data voor jouw regio, of benieuwd hoe een centrale wervingsmotor voor jouw doelgroep kan worden ingericht? We gaan graag vrijblijvend met je in gesprek.
+        </p>
+
+        <div class="p-4 rounded-2xl bg-dwsLightBlue border border-blue-200 inline-flex flex-col sm:flex-row items-start sm:items-center gap-6">
+          <div>
+            <span class="block text-[10px] font-bold text-slate-500">Aanspreekpunt</span>
+            <span class="text-sm font-bold text-dwsNavy">Benthe de Jong</span>
+          </div>
+          <div>
+            <span class="block text-[10px] font-bold text-slate-500">Telefoon</span>
+            <span class="text-sm font-semibold text-dwsNavy">+31 6 27 51 11 37</span>
+          </div>
+          <div>
+            <span class="block text-[10px] font-bold text-slate-500">Website</span>
+            <span class="text-sm font-semibold text-dwsBlue">www.dutchwebshark.com</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center text-xs text-slate-400 border-t border-slate-100 pt-4">
+        <span>Dutchwebshark B.V. · Orlyplein 77, 1043DS Amsterdam</span>
+        <span>Einde presentatie</span>
+      </div>
+    </div>
+
+    <!-- BOTTOM NAVIGATION BAR (No-print) -->
+    <div class="no-print w-full max-w-[1120px] flex justify-between items-center mt-4 px-2">
+      <button onclick="prevSlide()" class="px-5 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs transition duration-150 flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        Vorige slide
+      </button>
+
+      <!-- Slide Dots / Counter -->
+      <div class="flex items-center gap-2" id="slide-dots">
+        <!-- JS zal bolletjes genereren -->
+      </div>
+
+      <button onclick="nextSlide()" class="px-5 py-2 rounded-full bg-dwsBlue hover:bg-blue-600 text-white font-bold text-xs transition duration-150 flex items-center gap-2">
+        Volgende slide
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- SCRIPT VOOR INTERACTIEVE SLIDES & TOETSENBORD NAVIGATIE -->
+  <script>
+    const totalSlides = 12;
+    let currentSlide = 1;
+
+    function showSlide(index) {
+      if (index < 1) index = 1;
+      if (index > totalSlides) index = totalSlides;
+      
+      currentSlide = index;
+
+      document.querySelectorAll('.slide').forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i + 1 === currentSlide) {
+          slide.classList.add('active');
+        }
+      });
+
+      renderDots();
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        showSlide(currentSlide + 1);
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        showSlide(currentSlide - 1);
+      }
+    }
+
+    function renderDots() {
+      const dotsContainer = document.getElementById('slide-dots');
+      dotsContainer.innerHTML = '';
+      for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.className = `w-2.5 h-2.5 rounded-full transition-all ${i === currentSlide ? 'bg-dwsBlue w-6' : 'bg-slate-700 hover:bg-slate-500'}`;
+        dot.title = `Ga naar slide ${i}`;
+        dot.onclick = () => showSlide(i);
+        dotsContainer.appendChild(dot);
+      }
+      
+      const counter = document.createElement('span');
+      counter.className = 'text-xs text-slate-400 font-mono ml-2';
+      counter.innerText = `${currentSlide} / ${totalSlides}`;
+      dotsContainer.appendChild(counter);
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        prevSlide();
+      }
+    });
+
+    // Initial render
+    renderDots();
+  </script>
+
+</body>
+</html>
